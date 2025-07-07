@@ -1,0 +1,14 @@
+/* .topnav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+} */
+
+.nav {
+  list-style: none;
+  display: inline-flex;
+  padding: 0px;
+  & li {
+    padding: 10px;
+  }
+}
