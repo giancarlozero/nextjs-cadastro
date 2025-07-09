@@ -5,12 +5,15 @@ import UsuariosTabela from "@/app/components/usuariostabela";
 
 export default async function Usuarios() {
 
+  // RECUPERAR todos os usuários
+  // ===========================
   const usuarios = await prisma.usuario.findMany({
     orderBy: {
       nome: 'asc'
     }
   })
 
+  // Formatação de data para o padrão brasileiro (exemplo: 01 de janeiro de 2000)
   const dataFormato: Intl.DateTimeFormatOptions = {
     day: 'numeric',
     month: 'long',
@@ -26,6 +29,7 @@ export default async function Usuarios() {
     )
   }
 
+  // Aplicação das datas formatadas no componente 'usuariostabela.tsx'
   const datasFormatadas = usuarios.map((u) => ({
     ...u,
     criado_em: u.criado_em.toLocaleDateString('pt-BR', dataFormato),

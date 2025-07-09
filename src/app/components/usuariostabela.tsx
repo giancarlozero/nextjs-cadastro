@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
-type Usuario = {
+type UsuarioProps = {
   id: string,
   nome: string,
   setor: string,
@@ -13,7 +13,7 @@ type Usuario = {
   atualizado_em: string,
 }
 
-export default function UsuariosTabela({ usuarios }: { usuarios: Usuario[] }) {
+export default function UsuariosTabela({ usuarios }: { usuarios: UsuarioProps[] }) {
   const searchParams = useSearchParams()
   const [mensagem, setMensagem] = useState<string | null>(null)
 
@@ -56,7 +56,7 @@ export default function UsuariosTabela({ usuarios }: { usuarios: Usuario[] }) {
               <td>{usuario.criado_em}</td>
               <td>{usuario.atualizado_em}</td>
               <td><Link href={`/painel/usuarios/${usuario.id}/editar`}>Editar</Link></td>
-              <td><Link href="#">Apagar</Link></td>
+              <td><Link href={`/painel/usuarios/${usuario.id}/apagar`}>Apagar</Link></td>
             </tr>
           ))}
         </tbody>

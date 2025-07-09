@@ -18,7 +18,7 @@ function BotaoEditarUsuario() {
 }
 
 // Coleta o ID e os dados básicos do usuário a ser editado
-type Props = {
+type EditarUsuarioProps = {
   usuarioId: string;
   dadosUsuario: {
     nome: string,
@@ -27,7 +27,7 @@ type Props = {
   }
 }
 
-export default function EditarUsuarioForm({ usuarioId, dadosUsuario }: Props) {
+export default function EditarUsuarioForm({ usuarioId, dadosUsuario }: EditarUsuarioProps) {
   // Define usuário a ser editado com base em seu ID
   const EditarUsuarioComId = editarUsuario.bind(null, usuarioId)
 
