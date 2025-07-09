@@ -1,3 +1,4 @@
+import "@/app/ui/global.css";
 import TopNav from "../components/topnav";
 
 export default function PainelLayout({ children }: {children: React.ReactNode}) {

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-// import "./globals.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "NextJS CRUD",
-  description: "Exemplo de aplicação de cadastro feito com o NextJS",
+  description: "Exemplo de aplicação de cadastro de usuários, feito com o React e o NextJS",
 };
 
 export default function RootLayout({

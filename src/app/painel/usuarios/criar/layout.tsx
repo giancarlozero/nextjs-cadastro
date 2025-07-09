@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Editar Usuário | NextJS CRUD",
+  title: "Novo Usuário | NextJS CRUD",
 };
 
 export default function UsuariosLayout({ children }: {children: React.ReactNode}) {

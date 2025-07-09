@@ -3,6 +3,7 @@
 import { criarUsuario } from "../actions/usuarios";
 import { useFormStatus } from "react-dom";
 
+// Programação do botão de envio do formulário
 function BotaoCriarUsuario() {
   const { pending } = useFormStatus()
 
