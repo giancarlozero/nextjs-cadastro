@@ -9,8 +9,9 @@ type Props = {
 }
 
 export default async function EditarUsuario({ params }: Props) {
+  const { id } = await params
   const usuario = await prisma.usuario.findUnique({
-    where: { id: params.id },
+    where: { id: id },
   });
 
   if(!usuario) {

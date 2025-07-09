@@ -10,18 +10,20 @@ type Props = {
 }
 
 export default async function ConfirmarApagarUsuario({ params }: Props) {
+  // Define usuário a ser apagado com base em seu ID
+  const { id } = await params
   const usuarioApagar = await prisma.usuario.findUnique({
-    where: {
-      id: params.id
-    }
+    where: { id: id }
   })
 
+  // Se o usuário não for encontrado no banco de dados, redirecione para a lista de usuários
   if(!usuarioApagar) {
     redirect('/painel/usuarios')
   }
 
-  return (<>
-      <p>Você deseja apagar o(a) usuário(a) {usuarioApagar.nome} do sistema?</p>
+  return (
+    <>
+      <p>Você deseja apagar o(a) usuário(a) <strong>{usuarioApagar.nome}</strong> do sistema?</p>
 
       <ul>
         <li>Nome: {usuarioApagar.nome}</li>

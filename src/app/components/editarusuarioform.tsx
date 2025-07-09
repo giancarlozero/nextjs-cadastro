@@ -31,8 +31,6 @@ export default function EditarUsuarioForm({ usuarioId, dadosUsuario }: EditarUsu
   // Define usuário a ser editado com base em seu ID
   const EditarUsuarioComId = editarUsuario.bind(null, usuarioId)
 
-  // console.log('[editarUsuario] usuarioId:', usuarioId );
-
   return(
     <form action={EditarUsuarioComId}>
       <label htmlFor="nome">Nome completo
