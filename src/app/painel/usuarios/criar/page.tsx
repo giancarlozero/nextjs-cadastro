@@ -1,4 +1,4 @@
-import CriarUsuarioForm from "@/app/components/criarusuarioform";
+import CriarUsuarioForm from "@/app/components/usuarios/criarusuarioform";
 import Link from "next/link";
 
 export default function NovoUsuario() {

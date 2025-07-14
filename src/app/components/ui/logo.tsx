@@ -1,6 +1,6 @@
 'use client'
 
-import styles from '@/app/components/logo.module.css'
+import styles from '@/app/components/ui/logo.module.css'
 
 export default function Logo() {
   return(

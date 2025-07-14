@@ -1,6 +1,6 @@
 'use client'
 
-import { editarUsuario } from "../actions/usuarios";
+import { editarUsuario } from "../../actions/usuarios";
 import { useFormStatus } from "react-dom";
 
 // Programação do botão de envio do formulário

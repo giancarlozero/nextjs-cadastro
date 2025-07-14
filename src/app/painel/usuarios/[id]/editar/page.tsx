@@ -1,4 +1,4 @@
-import EditarUsuarioForm from "@/app/components/editarusuarioform";
+import EditarUsuarioForm from "@/app/components/usuarios/editarusuarioform";
 import Link from "next/link";
 import { prisma } from "@/app/lib/prisma";
 

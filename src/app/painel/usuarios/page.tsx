@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { prisma } from "../../lib/prisma";
 import { Suspense } from "react";
-import UsuariosTabela from "@/app/components/usuariostabela";
+import UsuariosTabela from "@/app/components/usuarios/usuariostabela";
 
 export default async function Usuarios() {
 
