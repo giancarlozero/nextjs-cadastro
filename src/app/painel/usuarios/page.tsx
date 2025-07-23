@@ -3,6 +3,7 @@ import { prisma } from "../../lib/prisma";
 import { Suspense } from "react";
 import UsuariosTabela from "@/app/components/usuarios/usuariostabela";
 import styles from '@/app/painel/painel.module.css'
+import { UserPlus } from "@deemlol/next-icons";
 
 export default async function Usuarios() {
 
@@ -44,11 +45,11 @@ export default async function Usuarios() {
           <div className="col-12">
             <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
               <div className="row">
-                <div className="col-11">
+                <div className="col-10">
                   <h1>Cadastro de usuários</h1>
                 </div>
-                <div className="col-1">
-                  <Link className="btn btn-success" href="/painel/usuarios/criar">Criar usuário</Link>
+                <div className="col-2 d-flex flex-row justify-content-end">
+                  <Link className="btn btn-success" href="/painel/usuarios/criar"><UserPlus size={24} color="#FFFFFF" /> Criar usuário</Link>
                 </div>
               </div>
             </div>

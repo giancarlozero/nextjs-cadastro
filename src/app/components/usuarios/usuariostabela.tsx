@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import styles from '@/app/components/usuarios/usuariostabela.module.css'
+import { UserCheck, UserX } from "@deemlol/next-icons"
 
 type UsuarioProps = {
   id: string,
@@ -58,8 +59,8 @@ export default function UsuariosTabela({ usuarios }: { usuarios: UsuarioProps[] 
               <td className="text-center">{usuario.atualizado_em}</td>
               <td className="text-center">
                 <div className="btn-group" role="group" aria-label="Navegação principal">
-                  <Link className="btn btn-secondary btn-sm" href={`/painel/usuarios/${usuario.id}/editar`}>Editar</Link>
-                  <Link className="btn btn-danger btn-sm" href={`/painel/usuarios/${usuario.id}/apagar`}>Apagar</Link>
+                  <Link className="btn btn-secondary btn-sm" href={`/painel/usuarios/${usuario.id}/editar`}><UserCheck size={18} color="#FFFFFF" /> Editar</Link>
+                  <Link className="btn btn-danger btn-sm" href={`/painel/usuarios/${usuario.id}/apagar`}><UserX size={18} color="#FFFFFF" /> Apagar</Link>
                 </div>
               </td>
             </tr>
