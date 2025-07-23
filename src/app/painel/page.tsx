@@ -7,38 +7,68 @@ export const metadata: Metadata = {
 
 export default function Inicio() {
   return(
-    <div className={["container-fluid", styles.espacoCabecalhoRodape].join(" ")}>
-      <div className="row g-2">
-        <div className="col-12">
-          <h1>Painel de controle</h1>
-        </div>
-        <div className="col-12 p-2 border rounded">
-          <p>Dados do painel de controle, gráficos, etc</p>
+    <>
+      <div className="secao-titulo container-fluid">
+        <div className="titulo row">
+          <div className="col-12">
+            <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
+              <h1>Painel de controle</h1>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="row g-2">
-        <div className={["col p-2 border rounded", styles.minAltura25].join(" ")}>
-          <p>Teste</p>
-        </div>
-        <div className={["col p-2 border rounded", styles.minAltura25].join(" ")}>
-          <p>Teste</p>
-        </div>
-        <div className={["col p-2 border rounded", styles.minAltura25].join(" ")}>
-          <p>Teste</p>
-        </div>
-        <div className={["col p-2 border rounded", styles.minAltura25].join(" ")}>
-          <p>Teste</p>
+      <div className="secao-dados container-fluid my-3">
+        <div className="dados row g-3">
+          <div className="col-3">
+            <div className={["p-2 border rounded", styles.boxConteudo, styles.altura25].join(" ")}>
+              <h2>Dados</h2>
+              <p>Lorem aliqua dolore ut ut. Et et irure officia officia dolor. Eu mollit veniam non incididunt in reprehenderit deserunt nulla adipisicing.</p>
+            </div>
+          </div>
+          <div className="col-3">
+            <div className={["p-2 border rounded", styles.boxConteudo, styles.altura25].join(" ")}>
+              <h2>Dados</h2>
+              <p>Lorem aliqua dolore ut ut. Et et irure officia officia dolor. Eu mollit veniam non incididunt in reprehenderit deserunt nulla adipisicing.</p>
+            </div>
+          </div>
+          <div className="col-3">
+            <div className={["p-2 border rounded", styles.boxConteudo, styles.altura25].join(" ")}>
+              <h2>Dados</h2>
+              <p>Lorem aliqua dolore ut ut. Et et irure officia officia dolor. Eu mollit veniam non incididunt in reprehenderit deserunt nulla adipisicing.</p>
+            </div>
+          </div>
+          <div className="col-3">
+            <div className={["p-2 border rounded", styles.boxConteudo, styles.altura25].join(" ")}>
+              <h2>Dados</h2>
+              <p>Lorem aliqua dolore ut ut. Et et irure officia officia dolor. Eu mollit veniam non incididunt in reprehenderit deserunt nulla adipisicing.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="row">
-        <div className={["col p-2 border rounded", styles.minAltura50].join(" ")}>
-          <p>Teste</p>
-        </div>
-        <div className={["col p-2 border rounded", styles.minAltura50].join(" ")}>
-          <p>Teste</p>
+
+      <div className="secao-dados container-fluid my-3">
+        <div className="dados row g-3">
+          <div className="col-4">
+            <div className={["p-2 border rounded", styles.boxConteudo, styles.altura50].join(" ")}>
+              <h2>Dados</h2>
+              <p>Lorem aliqua dolore ut ut. Et et irure officia officia dolor. Eu mollit veniam non incididunt in reprehenderit deserunt nulla adipisicing.</p>
+            </div>
+          </div>
+          <div className="col-4">
+            <div className={["p-2 border rounded", styles.boxConteudo, styles.altura50].join(" ")}>
+              <h2>Dados</h2>
+              <p>Lorem aliqua dolore ut ut. Et et irure officia officia dolor. Eu mollit veniam non incididunt in reprehenderit deserunt nulla adipisicing.</p>
+            </div>
+          </div>
+          <div className="col-4">
+            <div className={["p-2 border rounded", styles.boxConteudo, styles.altura50].join(" ")}>
+              <h2>Dados</h2>
+              <p>Lorem aliqua dolore ut ut. Et et irure officia officia dolor. Eu mollit veniam non incididunt in reprehenderit deserunt nulla adipisicing.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

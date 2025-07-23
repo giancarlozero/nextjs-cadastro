@@ -35,10 +35,6 @@ export default function UsuariosTabela({ usuarios }: { usuarios: UsuarioProps[] 
         </div>
       )}
 
-      <div className="border rounded p-2">
-        <Link className="btn btn-success" href="/painel/usuarios/criar">Criar usuário</Link>
-      </div>
-
       <div className="table-responsive">
         <table className="table table-hover">
           <thead>

@@ -1,3 +1,13 @@
 .cabecalho {
-  background-color: #ccc;
+  background-color: #dfdfdf;
+}
+
+.logo img {
+  height: 80px;
+  width: 150px;
+}
+
+.userprofile img {
+  border: 3px solid #212529;
+  border-radius: 100px;
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "../../lib/prisma";
 import { Suspense } from "react";
 import UsuariosTabela from "@/app/components/usuarios/usuariostabela";
+import styles from '@/app/painel/painel.module.css'
 
 export default async function Usuarios() {
 
@@ -37,8 +38,51 @@ export default async function Usuarios() {
   }))
 
   return (
-    <Suspense>
-      <UsuariosTabela usuarios={datasFormatadas} />
-    </Suspense>
+    <>
+      <div className="secao-titulo container-fluid">
+        <div className="titulo row">
+          <div className="col-12">
+            <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
+              <div className="row">
+                <div className="col-11">
+                  <h1>Cadastro de usuários</h1>
+                </div>
+                <div className="col-1">
+                  <Link className="btn btn-success" href="/painel/usuarios/criar">Criar usuário</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="secao-dados container-fluid my-3">
+        <div className="dados row g-3">
+          <div className="col-3">
+            <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
+              <h2>Modificações recentes</h2>
+              <ul>
+                <li>Mudança - Data</li>
+                <li>Mudança - Data</li>
+                <li>Mudança - Data</li>
+                <li>Mudança - Data</li>
+                <li>Mudança - Data</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="col-9">
+            <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
+              <h2>Todos os usuários</h2>
+
+              <Suspense>
+                <UsuariosTabela usuarios={datasFormatadas} />
+              </Suspense>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

@@ -1,18 +1,33 @@
 import Link from "next/link";
-import { LogIn } from "@deemlol/next-icons";
+import { Email, Google, Facebook, Apple } from "@deemlol/next-icons";
 
 export default function Home() {
   return (
     <div className="container-fluid">
-      <div className="crud-intro row m-10 p-20">
-        <div className="min-vh-100 col d-flex flex-row align-items-center justify-content-center">
-          <div>
-            <h1>Boas vindas!</h1>
-            <p>Gerencie sua equipe, tarefas e clientes</p>
+      <div className="row">
+        <div className="cta col-12 col-md-7 d-flex flex-row align-items-center justify-content-center p-5">
+          <div className="cta-texto">
+            <h1>Lorem Ipsum</h1>
+            <p>Dolor Sit Amet Dolor Sit Amet Dolor Sit Amet Dolor Sit Amet </p>
           </div>
         </div>
-        <div className="min-vh-100 col d-flex flex-row align-items-center justify-content-center">
-          <Link className="btn btn-primary" href="/painel"><LogIn size={24} color="#FFFFFF" /> Iniciar Sessão</Link>
+        <div className="login col-12 col-md-5 d-flex flex-row align-items-center justify-content-center p-5">
+          <div>
+            <div className="btn-group-vertical btn-group-lg">
+              <Link className="btn btn-outline-dark" href="/painel">
+                <Email size={24} color="#000000" /> Login com usuário e senha
+              </Link>
+              <a className="btn btn-outline-dark" href="#">
+                <Google size={24} color="#000000" /> Login com Google
+              </a>
+              <a className="btn btn-outline-dark" href="#">
+                <Facebook size={24} color="#000000" /> Login com Facebook
+              </a>
+              <a className="btn btn-outline-dark" href="#">
+                <Apple size={24} color="#000000" /> Login com Apple
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

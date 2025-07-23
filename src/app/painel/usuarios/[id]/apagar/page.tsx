@@ -1,3 +1,4 @@
+import styles from "@/app/painel/painel.module.css"
 import { prisma } from "@/app/lib/prisma";
 import { apagarUsuario } from "@/app/actions/usuarios";
 import { redirect } from "next/navigation";
@@ -23,21 +24,46 @@ export default async function ConfirmarApagarUsuario({ params }: Props) {
 
   return (
     <>
-      <p>Você deseja apagar o(a) usuário(a) <strong>{usuarioApagar.nome}</strong> do sistema?</p>
+      <div className="secao-titulo container-fluid">
+        <div className="titulo row">
+          <div className="col-12">
+            <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
+              <h1>Apagar usuário(a)</h1>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <ul>
-        <li>Nome: {usuarioApagar.nome}</li>
-        <li>Setor: {usuarioApagar.setor}</li>
-        <li>Cargo: {usuarioApagar.cargo}</li>
-      </ul>
+      <div className="secao-dados container-fluid my-3">
+        <div className="dados row g-3">
+          <div className="col">
+            <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
+              <p>Você deseja apagar o(a) usuário(a) <strong>{usuarioApagar.nome}</strong> do sistema?</p>
 
-      <p><strong>ATENÇÃO: esta ação é irreversível. Recomenda-se fazer um backup antes de apagar quaisquer dados.</strong></p>
+              <ul>
+                <li>Nome: {usuarioApagar.nome}</li>
+                <li>Setor: {usuarioApagar.setor}</li>
+                <li>Cargo: {usuarioApagar.cargo}</li>
+              </ul>
 
-      <form action={apagarUsuario}>
-        <input type="hidden" name="id" value={usuarioApagar.id} />
-        <button type="submit">Apagar</button>
-        <Link href="/painel/usuarios">Cancelar</Link>
-      </form>
+              <p className="text-danger"><strong>ATENÇÃO: esta ação é irreversível. Recomenda-se fazer um backup antes de apagar quaisquer dados.</strong></p>
+
+              <form action={apagarUsuario}>
+                <input type="hidden" name="id" value={usuarioApagar.id} />
+
+                <div className="row">
+                  <div className="col d-flex flex-row justify-content-between">
+                    <div className="btn-group">
+                      <Link className="btn btn-secondary" href="/painel/usuarios">Cancelar</Link>
+                      <button className="btn btn-danger" type="submit">Apagar usuário</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

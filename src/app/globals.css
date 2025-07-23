@@ -6,3 +6,24 @@ img {
 p {
   margin-bottom: 0px;
 }
+
+.cta, .login {
+  min-height: 50vh;
+}
+
+@media(min-width: 768px) {
+  .cta, .login {
+    min-height: 100vh;
+  }
+}
+
+.cta {
+  background-image: url('https://picsum.photos/1920/1080');
+}
+
+.cta-texto {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+}

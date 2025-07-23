@@ -2,16 +2,15 @@
 
 import { editarUsuario } from "../../actions/usuarios";
 import { useFormStatus } from "react-dom";
+import Link from "next/link";
+import styles from '@/app/painel/painel.module.css'
 
 // Programação do botão de envio do formulário
 function BotaoEditarUsuario() {
   const { pending } = useFormStatus()
 
   return (
-    <button
-      type="submit"
-      disabled={pending}
-    >
+    <button className="btn btn-primary" type="submit" disabled={pending}>
       {pending ? 'Salvando...' : 'Salvar alterações'}
     </button>
   )
@@ -32,32 +31,37 @@ export default function EditarUsuarioForm({ usuarioId, dadosUsuario }: EditarUsu
   const EditarUsuarioComId = editarUsuario.bind(null, usuarioId)
 
   return(
-    <form action={EditarUsuarioComId}>
-      <label htmlFor="nome">Nome completo
-        <input
-          type="text"
-          name="nome"
-          id="nome"
-          defaultValue={dadosUsuario.nome} // Nome do usuário como valor padrão, pré-preenchido
-        />
-      </label>
-      <label htmlFor="setor">Setor
-        <input
-          type="text"
-          name="setor"
-          id="setor"
-          defaultValue={dadosUsuario.setor} // Setor do usuário como valor padrão, pré-preenchido
-        />
-      </label>
-      <label htmlFor="cargo">Cargo
-        <input
-          type="text"
-          name="cargo"
-          id="cargo"
-          defaultValue={dadosUsuario.cargo} // Cargo do usuário como valor padrão, pré-preenchido
-        />
-      </label>
-      <BotaoEditarUsuario />
-    </form>
+    <div className="secao-dados container-fluid my-3">
+      <div className="dados row">
+        <div className="col-12">
+          <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
+            <form action={EditarUsuarioComId}>
+              {/* Nome do usuário como valor padrão, pré-preenchido */}
+              <label htmlFor="nome">Nome completo</label>
+              <input type="text" name="nome" className="form-control" id="nome" defaultValue={dadosUsuario.nome} />
+
+              {/* Setor do usuário como valor padrão, pré-preenchido */}
+              <label htmlFor="setor">Setor</label>
+              <input type="text" name="setor" className="form-control" id="setor" defaultValue={dadosUsuario.setor} />
+
+              {/* Cargo do usuário como valor padrão, pré-preenchido */}
+              <label htmlFor="cargo">Cargo</label>
+              <input type="text" name="cargo" className="form-control" id="cargo" defaultValue={dadosUsuario.cargo} />
+
+              <br/>
+
+              <div className="row">
+                <div className="col d-flex flex-row justify-content-between">
+                  <div className="btn-group">
+                    <Link className="btn btn-secondary" href="/painel/usuarios">Cancelar</Link>
+                    <BotaoEditarUsuario />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

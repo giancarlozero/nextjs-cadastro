@@ -1,20 +1,47 @@
-.espacoCabecalhoRodape {
-  margin-top: 100px;
-  margin-bottom: 60px;
-}
-
-.minAltura25 {
+.altura25 {
   min-height: 25vh;
 }
 
-.minAltura50 {
+.altura50 {
   min-height: 50vh;
 }
 
-.minAltura75 {
+.altura75 {
   min-height: 75vh;
 }
 
-.minAltura100 {
+.altura100 {
   min-height: 100vh;
+}
+
+/*
+h2 {
+  font-size: 1.6rem !important;
+} */
+
+.areaGeral {
+  margin-top: 110px;
+  margin-bottom: 50px;
+}
+
+.boxConteudo {
+  background-color: #dfdfdf;
+}
+
+.boxConteudo h1 {
+  margin: 0px !important;
+  font-size: 2rem !important;
+}
+
+/* .table {
+  margin-bottom: 0px !important;
+}
+
+.table thead tr th, table tbody tr td {
+  text-align: center;
+} */
+
+.espacamento {
+  margin-top: 100px;
+  margin-bottom: 60px;
 }
