@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-// import "./globals.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import BootstrapJS from "@/app/components/bootstrapjs/BootstrapJS";
+import "./globals.css";
+
+if (typeof window !== "undefined") {
+  require("bootstrap/dist/js/bootstrap");
+}
 
 export const metadata: Metadata = {
   title: "NextJS CRUD",
@@ -15,6 +21,7 @@ export default function RootLayout({
     <html lang="pt-br">
       <body>
         {children}
+        <BootstrapJS />
       </body>
     </html>
   );

@@ -6,10 +6,8 @@ export const metadata: Metadata = {
 
 export default function UsuarioDadosLayout({ children }: {children: React.ReactNode}) {
   return(
-    <div className="usuarios">
-      <div>
-        {children}
-      </div>
+    <div className="apagar-usuario">
+      {children}
     </div>
   );
 }

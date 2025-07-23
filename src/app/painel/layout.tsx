@@ -1,15 +1,17 @@
 import "@/app/ui/global.css";
-import TopNav from "../components/ui/topnav";
+import DashboardHeader from "@/app/components/ui/DashboardHeader";
+import DashboardFooter from "../components/ui/DashboardFooter";
 
 export default function PainelLayout({ children }: {children: React.ReactNode}) {
   return(
-    <div className="painel-inicio">
-      <TopNav />
-      <h1>Painel de controle</h1>
+    <>
+      <DashboardHeader />
 
-      <div>
+      <div className="p-2">
         {children}
       </div>
-    </div>
+
+      <DashboardFooter />
+    </>
   );
 }

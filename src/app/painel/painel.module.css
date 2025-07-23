@@ -1,0 +1,20 @@
+.espacoCabecalhoRodape {
+  margin-top: 100px;
+  margin-bottom: 60px;
+}
+
+.minAltura25 {
+  min-height: 25vh;
+}
+
+.minAltura50 {
+  min-height: 50vh;
+}
+
+.minAltura75 {
+  min-height: 75vh;
+}
+
+.minAltura100 {
+  min-height: 100vh;
+}
