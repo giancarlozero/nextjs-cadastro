@@ -1,6 +1,5 @@
 import styles from "@/app/painel/painel.module.css"
 import CriarUsuarioForm from "@/app/components/usuarios/criarusuarioform";
-import Link from "next/link";
 
 export default function NovoUsuario() {
   return(<>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Email, Google, Facebook, Apple } from "@deemlol/next-icons";
 
 export default function Home() {
   return (
@@ -11,23 +10,29 @@ export default function Home() {
             <p>Dolor Sit Amet Dolor Sit Amet Dolor Sit Amet Dolor Sit Amet </p>
           </div>
         </div>
+
         <div className="login col-12 col-md-5 d-flex flex-row align-items-center justify-content-center p-5">
-          <div>
-            <div className="btn-group-vertical btn-group-lg">
-              <Link className="btn btn-outline-dark" href="/painel">
-                <Email size={24} color="#000000" /> Login com usuário e senha
-              </Link>
-              <a className="btn btn-outline-dark" href="#">
-                <Google size={24} color="#000000" /> Login com Google
-              </a>
-              <a className="btn btn-outline-dark" href="#">
-                <Facebook size={24} color="#000000" /> Login com Facebook
-              </a>
-              <a className="btn btn-outline-dark" href="#">
-                <Apple size={24} color="#000000" /> Login com Apple
-              </a>
+          <form>
+            <label htmlFor="email">Endereço de email</label>
+            <input className="form-control" type="email" name="email" id="email" />
+
+            <label htmlFor="senha">Senha</label>
+            <input className="form-control" type="password" name="senha" id="senha" />
+
+            <br />
+
+            <div className="d-grid mx-auto">
+              <input className="btn btn-dark" type="submit" value="Entrar" />
             </div>
-          </div>
+
+            <br />
+
+            <Link href="#">Esqueci minha senha</Link>
+
+            <br />
+
+            <Link href="/painel">Painel (link temporário dev)</Link>
+          </form>
         </div>
       </div>
     </div>

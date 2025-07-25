@@ -3,9 +3,10 @@
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
+// import styles from '@/app/components/usuarios/usuariostabela.module.css'
 import { UserCheck, UserX } from "@deemlol/next-icons"
 
-type UsuarioProps = {
+type AdminProps = {
   id: string,
   nome: string,
   sobrenome: string,
@@ -16,31 +17,33 @@ type UsuarioProps = {
   atualizado_em: string,
 }
 
-export default function UsuariosTabela({ usuarios }: { usuarios: UsuarioProps[] }) {
+export default function AdminsTabela({ admins }: { admins: AdminProps[] }) {
   // const searchParams = useSearchParams()
-  // const [mensagemUsuario, setMensagem] = useState<string | null>(null)
+  // const [mensagemAdmin, setMensagem] = useState<string | null>(null)
 
   // useEffect(() => {
-  //   if (searchParams.get('admin') === '0') {
-  //     setMensagem('Usuário editado com sucesso.')
+  //   if (searchParams.get('admin') === '1') {
+  //     setMensagem('Administrador editado com sucesso.')
 
   //     const timeout = setTimeout(() => setMensagem(null), 5000);
   //     return () => clearTimeout(timeout)
   //   }
   // }, [searchParams])
 
+  // console.log(mensagemAdmin);
+
   // Se não houver nenhum usuário na tabela, retorna a mensagem
-  if(!usuarios || usuarios.length === 0) {
+  if(!admins || admins.length === 0) {
     return (
-      <p>Nenhum usuário cadastrado ainda. Clique no botão "Criar usuário" e comece a cadastrar alguns!</p>
+      <p>Nenhum administrador cadastrado ainda. Clique no botão "Criar usuário" e comece a cadastrar alguns!</p>
     )
   }
 
   return(
     <>
-      {/* {mensagemUsuario &&(
+      {/* {mensagemAdmin &&(
         <div className="editadosucesso">
-          <p>{mensagemUsuario}</p>
+          <p>{mensagemAdmin}</p>
         </div>
       )} */}
 
@@ -58,17 +61,17 @@ export default function UsuariosTabela({ usuarios }: { usuarios: UsuarioProps[] 
           </thead>
           <tbody>
           {/* Obtém os usuários salvos na tabela "Usuários" do banco e os exibe, um em cada linha de uma tabela HTML */}
-          {usuarios.map((usuario) => (
-            <tr key={usuario.id}>
-              <td>{usuario.nome} {usuario.sobrenome}</td>
-              <td className="text-center">{usuario.setor}</td>
-              <td className="text-center">{usuario.cargo}</td>
-              <td className="text-center">{usuario.criado_em}</td>
-              <td className="text-center">{usuario.atualizado_em}</td>
+          {admins.map((admin) => (
+            <tr key={admin.id}>
+              <td>{admin.nome} {admin.sobrenome}</td>
+              <td className="text-center">{admin.setor}</td>
+              <td className="text-center">{admin.cargo}</td>
+              <td className="text-center">{admin.criado_em}</td>
+              <td className="text-center">{admin.atualizado_em}</td>
               <td className="text-center">
                 <div className="btn-group" role="group" aria-label="Navegação principal">
-                  <Link className="btn btn-secondary btn-sm" href={`/painel/usuarios/${usuario.id}/editar`}><UserCheck size={18} color="#FFFFFF" /> Editar</Link>
-                  <Link className="btn btn-danger btn-sm" href={`/painel/usuarios/${usuario.id}/apagar`}><UserX size={18} color="#FFFFFF" /> Apagar</Link>
+                  <Link className="btn btn-secondary btn-sm" href={`/painel/usuarios/${admin.id}/editar`}><UserCheck size={18} color="#FFFFFF" /> Editar</Link>
+                  <Link className="btn btn-danger btn-sm" href={`/painel/usuarios/${admin.id}/apagar`}><UserX size={18} color="#FFFFFF" /> Apagar</Link>
                 </div>
               </td>
             </tr>

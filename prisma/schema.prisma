@@ -11,10 +11,23 @@ datasource db {
 model Usuario {
   id            String   @id @default(cuid())
   nome          String
+  sobrenome     String
+  nivel_acesso  String
   setor         String
   cargo         String
-  usuario       String
+  email         String   @unique
   senha         String
   criado_em     DateTime @default(now())
   atualizado_em DateTime @updatedAt
+
+  logs UsuarioLog[]
+}
+
+model UsuarioLog {
+  id        String   @id @default(cuid())
+  usuarioId String?
+  acao      String // Criado, Editado ou Apagado
+  detalhes  String?
+  criado_em DateTime @default(now())
+  usuario   Usuario? @relation(fields: [usuarioId], references: [id])
 }

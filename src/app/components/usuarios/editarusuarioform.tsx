@@ -21,6 +21,7 @@ type EditarUsuarioProps = {
   usuarioId: string;
   dadosUsuario: {
     nome: string,
+    sobrenome: String,
     setor: string,
     cargo: string
   }
@@ -36,15 +37,19 @@ export default function EditarUsuarioForm({ usuarioId, dadosUsuario }: EditarUsu
         <div className="col-12">
           <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
             <form action={EditarUsuarioComId}>
-              {/* Nome do usuário como valor padrão, pré-preenchido */}
-              <label htmlFor="nome">Nome completo</label>
+              {/* Nome do usuário como valor pré-preenchido */}
+              <label htmlFor="nome">Nome</label>
               <input type="text" name="nome" className="form-control" id="nome" defaultValue={dadosUsuario.nome} />
 
-              {/* Setor do usuário como valor padrão, pré-preenchido */}
+              {/* Sobrenome do usuário como valor pré-preenchido */}
+              <label htmlFor="sobrenome">Sobrenome</label>
+              <input type="text" name="sobrenome" className="form-control" id="sobrenome" defaultValue={dadosUsuario.sobrenome} />
+
+              {/* Setor do usuário como valor pré-preenchido */}
               <label htmlFor="setor">Setor</label>
               <input type="text" name="setor" className="form-control" id="setor" defaultValue={dadosUsuario.setor} />
 
-              {/* Cargo do usuário como valor padrão, pré-preenchido */}
+              {/* Cargo do usuário como valor pré-preenchido */}
               <label htmlFor="cargo">Cargo</label>
               <input type="text" name="cargo" className="form-control" id="cargo" defaultValue={dadosUsuario.cargo} />
 

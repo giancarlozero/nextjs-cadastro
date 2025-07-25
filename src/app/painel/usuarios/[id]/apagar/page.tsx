@@ -41,12 +41,12 @@ export default async function ConfirmarApagarUsuario({ params }: Props) {
               <p>Você deseja apagar o(a) usuário(a) <strong>{usuarioApagar.nome}</strong> do sistema?</p>
 
               <ul>
-                <li>Nome: {usuarioApagar.nome}</li>
+                <li>Nome completo: {usuarioApagar.nome} {usuarioApagar.sobrenome}</li>
                 <li>Setor: {usuarioApagar.setor}</li>
                 <li>Cargo: {usuarioApagar.cargo}</li>
               </ul>
 
-              <p className="text-danger"><strong>ATENÇÃO: esta ação é irreversível. Recomenda-se fazer um backup antes de apagar quaisquer dados.</strong></p>
+              <p className="text-danger"><strong>ATENÇÃO: esta ação é irreversível.</strong> Recomenda-se fazer um backup antes de apagar quaisquer dados.</p>
 
               <form action={apagarUsuario}>
                 <input type="hidden" name="id" value={usuarioApagar.id} />
