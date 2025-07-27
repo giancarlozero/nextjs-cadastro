@@ -101,28 +101,24 @@ export async function editarUsuario(usuarioId: string, formData: FormData) {
 // DELETAR usuário
 // ===============
 export async function apagarUsuario(formData: FormData) {
-  try {
-    const id = formData.get('id') as string;
-    const usuario = await prisma.usuario.findUnique({ where: { id } })
+  const id = formData.get('id') as string;
+  const usuario = await prisma.usuario.findUnique({ where: { id } })
 
-    if(!usuario) throw new Error('Usuário não encontrado')
+  if(!usuario) throw new Error('Usuário não encontrado')
 
-    await prisma.usuario.delete({ where: { id } })
+  await prisma.usuarioLog.create ({
+    data: {
+      acao: 'APAGADO',
+      usuarioId: id,
+      detalhes: JSON.stringify({
+        nome: usuario.nome,
+        sobrenome: usuario.sobrenome
+      })
+    }
+  })
 
-    await prisma.usuarioLog.create ({
-      data: {
-        acao: 'APAGADO',
-        usuarioId: id,
-        detalhes: JSON.stringify({
-          nome: usuario.nome,
-          sobrenome: usuario.sobrenome
-        })
-      }
-    })
+  await prisma.usuario.delete({ where: { id } })
 
-    revalidatePath('/painel/usuarios')
-    redirect('/painel/usuarios')
-  } catch(error) {
-    return { error: 'Falha ao apagar usuário.'}
-  }
+  revalidatePath('/painel/usuarios')
+  redirect('/painel/usuarios')
 }
