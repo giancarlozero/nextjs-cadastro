@@ -2,16 +2,10 @@ import styles from "@/app/painel/painel.module.css"
 import EditarUsuarioForm from "@/app/components/usuarios/editarusuarioform";
 import { prisma } from "@/app/lib/prisma";
 
-type Props = {
-  params: {
-    id: string;
-  }
-}
-
-export default async function EditarUsuario({ params }: Props) {
-  const { id } = await params
+export default async function EditarUsuario(props: {params: Promise<{id: string}>}) {
+  const params = await props.params;
   const usuario = await prisma.usuario.findUnique({
-    where: { id: id },
+    where: { id: params.id },
   });
 
   if(!usuario) {
@@ -29,7 +23,7 @@ export default async function EditarUsuario({ params }: Props) {
         </div>
       </div>
 
-      <EditarUsuarioForm usuarioId={usuario.id} dadosUsuario={usuario} />
+      <EditarUsuarioForm usuario={usuario} />
     </>
   );
 }

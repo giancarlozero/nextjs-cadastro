@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@deemlol/next-icons": "^0.1.9",
-    "@prisma/client": "^6.11.1",
+    "@prisma/client": "^6.13.0",
     "bootstrap": "^5.3.7",
     "bootstrap-icons": "^1.13.1",
     "env": "^0.0.2",
@@ -19,6 +19,7 @@
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-toastify": "^11.0.5",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
     "swr": "^2.3.4"
@@ -31,7 +32,7 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
-    "prisma": "^6.11.1",
+    "prisma": "^6.13.0",
     "typescript": "^5"
   }
 }

@@ -2,27 +2,31 @@
 
 import Link from "next/link";
 import { criarUsuario } from "../../actions/usuarios";
-import { useFormStatus } from "react-dom";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 import styles from '@/app/painel/painel.module.css'
 
-// Programação do botão de envio do formulário
-function BotaoCriarUsuario() {
-  const { pending } = useFormStatus()
-
-  return (
-    <button className="btn btn-primary" type="submit" disabled={pending}>
-      {pending ? 'Criando usuário...' : 'Criar usuário'}
-    </button>
-  )
-}
-
 export default function CriarUsuarioForm() {
+  const router = useRouter();
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const res = await criarUsuario(formData);
+    if (res.success) {
+      toast.success(res.message);
+      router.push("/painel/usuarios");
+    } else {
+      toast.error(res.message);
+    }
+  }
+
   return(
     <div className="secao-dados container-fluid my-3">
       <div className="dados row">
         <div className="col-12">
           <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
-            <form action={criarUsuario}>
+            <form onSubmit={handleSubmit}>
               <p>Nível de acesso</p>
               <div className="form-check form-check-inline">
                 <input className="form-check-input" type="radio" name="nivel_acesso" id="acesso-admin" value="Administrador" />
@@ -57,7 +61,7 @@ export default function CriarUsuarioForm() {
                 <div className="col d-flex flex-row justify-content-between">
                   <div className="btn-group">
                     <Link className="btn btn-secondary" href="/painel/usuarios">Cancelar</Link>
-                    <BotaoCriarUsuario />
+                    <button className="btn btn-primary" type="submit">Criar usuário</button>
                   </div>
                 </div>
               </div>
