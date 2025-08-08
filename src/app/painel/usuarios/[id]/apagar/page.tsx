@@ -1,25 +1,37 @@
 import styles from "@/app/painel/painel.module.css"
 import { prisma } from "@/app/lib/prisma";
-import { apagarUsuario } from "@/app/actions/usuarios";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { apagarUsuario } from "@/app/actions/usuarios";
 
-type Props = {
+type UsuarioApagadoProps = {
   params: {
     id: string
   }
 }
 
-export default async function ConfirmarApagarUsuario({ params }: Props) {
+export default async function ConfirmarApagarUsuario({ params }: UsuarioApagadoProps) {
   // Define usuário a ser apagado com base em seu ID
-  const { id } = await params
+  const { id } = await params;
   const usuarioApagar = await prisma.usuario.findUnique({
     where: { id: id }
-  })
+  });
 
   // Se o usuário não for encontrado no banco de dados, redirecione para a lista de usuários
   if(!usuarioApagar) {
-    redirect('/painel/usuarios')
+    redirect('/painel/usuarios?encontrado=0');
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const res = await apagarUsuario(formData);
+    if (res.success) {
+      toast.success(res.message);
+      router.push("/painel/usuarios");
+    } else {
+      toast.error(res.message);
+    }
   }
 
   return (
@@ -41,9 +53,9 @@ export default async function ConfirmarApagarUsuario({ params }: Props) {
               <p>Você deseja apagar o(a) usuário(a) <strong>{usuarioApagar.nome}</strong> do sistema?</p>
 
               <ul>
-                <li>Nome completo: {usuarioApagar.nome} {usuarioApagar.sobrenome}</li>
-                <li>Setor: {usuarioApagar.setor}</li>
-                <li>Cargo: {usuarioApagar.cargo}</li>
+                <li>Nome completo: <strong>{usuarioApagar.nome} {usuarioApagar.sobrenome}</strong></li>
+                <li>Setor: <strong>{usuarioApagar.setor}</strong></li>
+                <li>Cargo: <strong>{usuarioApagar.cargo}</strong></li>
               </ul>
 
               <p className="text-danger"><strong>ATENÇÃO: esta ação é irreversível.</strong> Recomenda-se fazer um backup antes de apagar quaisquer dados.</p>

@@ -1,7 +1,7 @@
 'use server'
 
 import { prisma } from "../lib/prisma";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 // CRIAR usuário
 // =============
@@ -100,7 +100,7 @@ export async function editarUsuario(usuarioId: string, formData: FormData) {
 }
 
 // APAGAR usuário
-// ===============
+// ==============
 export async function apagarUsuario(formData: FormData) {
   const usuarioId = formData.get('id') as string;
 
