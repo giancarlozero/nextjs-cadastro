@@ -1,7 +1,6 @@
 'use server'
 
 import { prisma } from "../lib/prisma";
-// import { redirect } from "next/navigation";
 
 // CRIAR usuário
 // =============
@@ -135,8 +134,7 @@ export async function apagarUsuario(formData: FormData) {
       }
     });
 
-    // return redirect('/painel/usuarios?apagado=1');
-    return { success: true, message: 'Usuário apagado com sucesso' }
+    return { success: true, message: 'Usuário(a) apagado(a) com sucesso' }
   } catch(error) {
     console.error(error);
     return { success: false, message: 'Erro ao apagar usuário(a).' }

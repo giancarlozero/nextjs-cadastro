@@ -12,7 +12,8 @@ export default async function EditarUsuario(props: {params: Promise<{id: string}
     return <p>Usuário não encontrado.</p>
   }
 
-  return(<>
+  return(
+    <>
       <div className="secao-titulo container-fluid">
         <div className="titulo row">
           <div className="col-12">

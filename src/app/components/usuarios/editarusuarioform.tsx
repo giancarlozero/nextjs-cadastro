@@ -1,6 +1,6 @@
 'use client'
 
-import { editarUsuario } from "../../actions/usuarios";
+import { editarUsuario } from "@/app/actions/usuarios";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import styles from '@/app/painel/painel.module.css'
