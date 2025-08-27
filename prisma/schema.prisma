@@ -8,6 +8,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Usuário que operará o sistema, gerenciando empresas e tarefas
 model Usuario {
   id            String   @id @default(cuid())
   nome          String
@@ -20,7 +21,8 @@ model Usuario {
   criado_em     DateTime @default(now())
   atualizado_em DateTime @updatedAt
 
-  logs UsuarioLog[]
+  tarefas Tarefa[]
+  logs    UsuarioLog[]
 }
 
 model UsuarioLog {
@@ -30,4 +32,38 @@ model UsuarioLog {
   detalhes  String?
   criado_em DateTime @default(now())
   usuario   Usuario? @relation(fields: [usuarioId], references: [id])
+}
+
+// Serviços oferecidos pela empresa, que podem ser contratados por seus clientes
+model Servico {
+  id            String   @id @default(cuid())
+  titulo        String
+  descricao     String
+  preco         Float // Preço do serviço
+  criado_em     DateTime @default(now())
+  atualizado_em DateTime  @updatedAt
+}
+
+// Cliente que contratou a empresa
+model Cliente {
+  id        String   @id @default(cuid())
+  nome      String // Nome ou razão social
+  documento String // CPF ou CNPJ
+  valor     Float // Valor total dos serviços contratados pelo cliente
+  tarefaId  String?
+  tarefas   Tarefa[]
+  criado_em DateTime @default(now())
+}
+
+// Tarefa que um cliente da empresa solicitou e que deve ser gerenciada ou feita pelos administradores e feita pelos usuários
+model Tarefa {
+  id            String    @id @default(cuid())
+  clienteId     String?
+  titulo        String
+  descricao     String
+  demandado_por Cliente? @relation(fields: [clienteId], references: [id])
+  responsaveis  Usuario[]
+  prazo         String?
+  criado_em     DateTime  @default(now())
+  atualizado_em DateTime  @updatedAt
 }
