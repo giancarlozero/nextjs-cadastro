@@ -1,9 +1,6 @@
 'use client'
 
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
-import { UserCheck, UserX } from "@deemlol/next-icons"
 
 type UsuarioProps = {
   id: string,
@@ -17,18 +14,6 @@ type UsuarioProps = {
 }
 
 export default function UsuariosTabela({ usuarios }: { usuarios: UsuarioProps[] }) {
-  // const searchParams = useSearchParams()
-  // const [mensagemUsuario, setMensagem] = useState<string | null>(null)
-
-  // useEffect(() => {
-  //   if (searchParams.get('admin') === '0') {
-  //     setMensagem('Usuário editado com sucesso.')
-
-  //     const timeout = setTimeout(() => setMensagem(null), 5000);
-  //     return () => clearTimeout(timeout)
-  //   }
-  // }, [searchParams])
-
   // Se não houver nenhum usuário na tabela, retorna a mensagem
   if(!usuarios || usuarios.length === 0) {
     return (
@@ -38,12 +23,6 @@ export default function UsuariosTabela({ usuarios }: { usuarios: UsuarioProps[] 
 
   return(
     <>
-      {/* {mensagemUsuario &&(
-        <div className="editadosucesso">
-          <p>{mensagemUsuario}</p>
-        </div>
-      )} */}
-
       <div className="table-responsive">
         <table className="table table-hover">
           <thead>
@@ -66,9 +45,9 @@ export default function UsuariosTabela({ usuarios }: { usuarios: UsuarioProps[] 
               <td className="text-center">{usuario.criado_em}</td>
               <td className="text-center">{usuario.atualizado_em}</td>
               <td className="text-center">
-                <div className="btn-group" role="group" aria-label="Navegação principal">
-                  <Link className="btn btn-secondary btn-sm" href={`/painel/usuarios/${usuario.id}/editar`}><UserCheck size={18} color="#FFFFFF" /> Editar</Link>
-                  <Link className="btn btn-danger btn-sm" href={`/painel/usuarios/${usuario.id}/apagar`}><UserX size={18} color="#FFFFFF" /> Apagar</Link>
+                <div className="btn-group" role="group" aria-label="Opções de edição">
+                  <Link className="btn btn-secondary btn-sm" href={`/painel/usuarios/${usuario.id}/editar`}>Editar</Link>
+                  <Link className="btn btn-danger btn-sm" href={`/painel/usuarios/${usuario.id}/apagar`}>Apagar</Link>
                 </div>
               </td>
             </tr>

@@ -1,13 +1,21 @@
 'use client'
 
 import Link from "next/link";
-import { House, Users } from "@deemlol/next-icons"
+import styles from "@/app/components/ui/dashboardnav.module.css"
 
 export default function DashboardNav(){
-  return(
-    <nav className="btn-group">
-      <Link href="/painel" className="btn btn-dark"><House size={24} color="#FFFFFF" /> Início</Link>
-      <Link href="/painel/usuarios" className="btn btn-dark"><Users size={24} color="#FFFFFF" /> Usuários</Link>
-    </nav>
+  return(<>
+      <nav className={["btn-group", styles.navegacao].join(" ")}>
+        <Link href="/painel" className="btn btn-dark">Início</Link>
+        <Link href="/painel/usuarios" className="btn btn-dark">Usuários</Link>
+        <Link href="/painel/servicos" className="btn btn-dark">Serviços</Link>
+        {/* <Link href="#" className="btn btn-dark">Clientes</Link> */}
+        {/* <Link href="#" className="btn btn-dark">Tarefas</Link> */}
+      </nav>
+
+      <nav className={["btn-group", styles.navegacao].join(" ")}>
+        {/* <Link href="/painel/auditoria" className="btn btn-dark"><UserCheck size={20} color="#FFFFFF" /> Auditoria</Link> */}
+      </nav>
+    </>
   );
 }

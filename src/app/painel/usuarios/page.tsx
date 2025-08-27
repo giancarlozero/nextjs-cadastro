@@ -5,7 +5,6 @@ import RegistroAlteracoes from "@/app/components/usuarios/registroalteracoes";
 import UsuariosTabela from "@/app/components/usuarios/usuariostabela";
 import AdminsTabela from "@/app/components/usuarios/adminstabela";
 import styles from '@/app/painel/painel.module.css'
-import { UserPlus } from "@deemlol/next-icons";
 
 export default async function Usuarios() {
 
@@ -63,7 +62,7 @@ export default async function Usuarios() {
                   <h1>Cadastro de usuários</h1>
                 </div>
                 <div className="col-2 d-flex flex-row justify-content-end">
-                  <Link className="btn btn-success" href="/painel/usuarios/criar"><UserPlus size={24} color="#FFFFFF" /> Criar usuário</Link>
+                  <Link className="btn btn-success" href="/painel/usuarios/criar">Criar usuário</Link>
                 </div>
               </div>
             </div>
