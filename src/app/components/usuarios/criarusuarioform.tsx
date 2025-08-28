@@ -22,7 +22,7 @@ export default function CriarUsuarioForm() {
   }
 
   return(
-    <div className="secao-dados container-fluid my-3">
+    <div className="secao-dados container-fluid my-3 p-0">
       <div className="dados row">
         <div className="col-12">
           <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>

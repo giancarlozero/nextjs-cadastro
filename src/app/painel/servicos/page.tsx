@@ -31,7 +31,7 @@ export default async function Servicos() {
 
   return (
     <>
-      <div className="secao-titulo container-fluid">
+      <div className="secao-titulo container-fluid p-0">
         <div className="titulo row">
           <div className="col-12">
             <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
@@ -48,7 +48,7 @@ export default async function Servicos() {
         </div>
       </div>
 
-      <div className="secao-dados container-fluid my-3">
+      <div className="secao-dados container-fluid my-3 p-0 p-0">
         <div className="dados row g-3">
           <RegistroAlteracoes />
 

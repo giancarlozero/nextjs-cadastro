@@ -3,7 +3,7 @@ import CriarUsuarioForm from "@/app/components/usuarios/criarusuarioform";
 
 export default function NovoUsuario() {
   return(<>
-      <div className="secao-titulo container-fluid">
+      <div className="secao-titulo container-fluid p-0">
         <div className="titulo row">
           <div className="col-12">
             <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>

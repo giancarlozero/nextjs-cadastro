@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function Inicio() {
   return(
     <>
-      <div className="secao-titulo container-fluid">
+      <div className="secao-titulo container-fluid p-0">
         <div className="titulo row">
           <div className="col-12">
             <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
@@ -18,7 +18,7 @@ export default function Inicio() {
         </div>
       </div>
 
-      <div className="secao-dados container-fluid my-3">
+      <div className="secao-dados container-fluid my-3 p-0">
         <div className="dados row g-3">
           <div className="col-3">
             <div className={["p-2 border rounded", styles.boxConteudo, styles.altura25].join(" ")}>
@@ -47,7 +47,7 @@ export default function Inicio() {
         </div>
       </div>
 
-      <div className="secao-dados container-fluid my-3">
+      <div className="secao-dados container-fluid my-3 p-0">
         <div className="dados row g-3">
           <div className="col-4">
             <div className={["p-2 border rounded", styles.boxConteudo, styles.altura50].join(" ")}>

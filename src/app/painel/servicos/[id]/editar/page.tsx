@@ -14,7 +14,7 @@ export default async function EditarUsuario(props: {params: Promise<{id: string}
 
   return(
     <>
-      <div className="secao-titulo container-fluid">
+      <div className="secao-titulo container-fluid p-0">
         <div className="titulo row">
           <div className="col-12">
             <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
