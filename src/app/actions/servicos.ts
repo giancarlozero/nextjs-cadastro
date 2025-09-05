@@ -7,21 +7,23 @@ import { prisma } from "../lib/prisma";
 export async function criarServico(formData: FormData) {
   try {
     // Usa formData.get para pegar os valores de cada campo e atribuir à respectiva variável
-    const titulo = formData.get('titulo-servico') as string;
-    const descricao = formData.get('descricao-servico') as string;
-    const preco = formData.get('preco-servico') as string;
+    const titulo = formData.get('titulo') as string;
+    const descricao = formData.get('descricao') as string;
+    const preco = formData.get('preco')
+
+    // O valor numérico obtido do formulário sempre vem como string. Convertê-lo para float
+    const precoFloat = parseFloat(preco)
 
     // Salva os dados do novo usuário no banco
-    // const servicoCriado = await prisma.servico.create({
     await prisma.servico.create({
       data: {
         titulo,
         descricao,
-        preco
+        preco: precoFloat,
       }
     })
 
-    // Registra o usuário que foi criado
+    // Registra o serviço que foi criado
     // await prisma.servicoLog.create({
     //   data: {
     //     acao: 'CRIADO',

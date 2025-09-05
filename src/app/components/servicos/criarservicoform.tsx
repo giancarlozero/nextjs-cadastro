@@ -28,13 +28,13 @@ export default function CriarServicoForm() {
           <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
             <form onSubmit={handleSubmit}>
               <label htmlFor="nome">Título do serviço</label>
-              <input className="form-control" type="text" name="titulo-servico" id="titulo-servico" required />
+              <input className="form-control" type="text" name="titulo" id="titulo" required />
 
               <label htmlFor="setor">Preço (em Reais)</label>
-              <input className="form-control" type="number" name="preco-servico" id="preco-servico" required />
+              <input className="form-control" type="number" step="0.01" name="preco" id="preco" required />
 
               <label htmlFor="sobrenome">Descrição</label>
-              <input className="form-control" type="textarea" name="descricao-servico" id="descricao-servico" required />
+              <input className="form-control" type="textarea" name="descricao" id="descricao" required />
 
               <br/>
 
