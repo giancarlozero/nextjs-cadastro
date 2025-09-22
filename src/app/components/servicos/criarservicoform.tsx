@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link";
-import { criarServico } from "../../actions/servicos";
+import { criarServico } from "@/app/actions/servicos";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import styles from '@/app/painel/painel.module.css'

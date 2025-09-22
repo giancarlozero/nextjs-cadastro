@@ -9,7 +9,7 @@ export async function criarServico(formData: FormData) {
     // Usa formData.get para pegar os valores de cada campo e atribuir à respectiva variável
     const titulo = formData.get('titulo') as string;
     const descricao = formData.get('descricao') as string;
-    const preco = formData.get('preco')
+    const preco = formData.get('preco') as string
 
     // O valor numérico obtido do formulário sempre vem como string. Convertê-lo para float
     const precoFloat = parseFloat(preco)
@@ -35,6 +35,41 @@ export async function criarServico(formData: FormData) {
     return { success: true, message: 'Serviço(a) criado(a) com sucesso.' }
   } catch (error) {
     return { success: false, message: 'Erro ao criar serviço(a).' }
+  }
+}
+
+// EDITAR serviço
+// ==============
+export async function editarServico(servicoId: string, formData: FormData) {
+  try {
+    // Verifica se o ID do usuário foi coletado corretamente
+    if (!servicoId || servicoId.trim() === '') {
+      throw new Error('ID de serviço inválido.');
+    }
+
+    const titulo = formData.get('titulo') as string
+    const descricao = formData.get('descricao') as string
+    const preco = formData.get('preco') as string
+
+    const precoFloat = parseFloat(preco)
+
+    // console.log(titulo)
+    // console.log(descricao)
+    // console.log(preco)
+    // console.log(precoFloat)
+
+    await prisma.servico.update({
+      where: { id: servicoId },
+      data: {
+        titulo,
+        descricao,
+        preco: precoFloat
+      }
+    })
+
+    return { success: true, message: 'Serviço editado com sucesso.' }
+  } catch {
+    return { success: false, message: 'Erro ao editar serviço.' }
   }
 }
 
