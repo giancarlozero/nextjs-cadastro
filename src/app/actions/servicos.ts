@@ -38,3 +38,33 @@ export async function criarServico(formData: FormData) {
   }
 }
 
+// APAGAR serviço
+// ==============
+export async function apagarServico(formData: FormData) {
+  const servicoId = formData.get('id') as string;
+
+  try {
+    const servicoApagado = await prisma.servico.findUnique({
+      where: {
+        id: servicoId
+      }
+    })
+
+    if(!servicoApagado) {
+      return {
+        success: false,
+        message: 'Serviço não encontrado(a)',
+      }
+    }
+
+    await prisma.servico.delete({
+      where: {
+        id: servicoId
+      }
+    })
+
+    return { success: true, message: 'Serviço apagado com sucesso' }
+  } catch(error) {
+    return { success: false, message: 'Erro ao apagar serviço.' }
+  }
+}

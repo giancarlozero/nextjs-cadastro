@@ -1,24 +1,24 @@
 import styles from "@/app/painel/painel.module.css"
 import { prisma } from "@/app/lib/prisma";
 import { redirect } from "next/navigation";
-import ApagarUsuarioForm from "@/app/components/usuarios/apagarusuarioform";
+import ApagarServicoForm from "@/app/components/servicos/apagarservicoform";
 
-type UsuarioApagadoProps = {
+type ServicoApagadoProps = {
   params: {
     id: string
   }
 }
 
-export default async function ConfirmarApagarUsuario({ params }: UsuarioApagadoProps) {
-  // Define usuário a ser apagado com base em seu ID
+export default async function ConfirmarApagarServico({ params }: ServicoApagadoProps) {
+  // Define serviço a ser apagado com base em seu ID
   const { id } = await params;
-  const usuario = await prisma.usuario.findUnique({
+  const servico = await prisma.servico.findUnique({
     where: { id: id }
   });
 
-  // Se o usuário não for encontrado no banco de dados, redirecione para a lista de usuários
-  if(!usuario) {
-    redirect('/painel/usuarios?encontrado=0');
+  // Se o serviço não for encontrado no banco de dados, redirecione para a lista de serviços
+  if(!servico) {
+    redirect('/painel/servicos?encontrado=0');
   }
 
   return (
@@ -27,7 +27,7 @@ export default async function ConfirmarApagarUsuario({ params }: UsuarioApagadoP
         <div className="titulo row">
           <div className="col-12">
             <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
-              <h1>Apagar usuário(a)</h1>
+              <h1>Apagar serviço</h1>
             </div>
           </div>
         </div>
@@ -37,17 +37,17 @@ export default async function ConfirmarApagarUsuario({ params }: UsuarioApagadoP
         <div className="dados row g-3">
           <div className="col">
             <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
-              <p>Você deseja apagar o(a) usuário(a) <strong>{usuario.nome}</strong> do sistema?</p>
+              <p>Você deseja apagar o serviço <strong>{servico.titulo}</strong> do sistema?</p>
 
               <ul>
-                <li>Nome completo: <strong>{usuario.nome} {usuario.sobrenome}</strong></li>
-                <li>Setor: <strong>{usuario.setor}</strong></li>
-                <li>Cargo: <strong>{usuario.cargo}</strong></li>
+                <li>Título do serviço: <strong>{servico.titulo} {servico.titulo}</strong></li>
+                <li>Preço: <strong>R$ {servico.preco}</strong></li>
+                <li>Descrição: <strong>{servico.descricao}</strong></li>
               </ul>
 
               <p className="text-danger"><strong>ATENÇÃO: esta ação é irreversível.</strong> Recomenda-se fazer um backup antes de apagar quaisquer dados.</p>
 
-              <ApagarUsuarioForm usuario={usuario} />
+              <ApagarServicoForm servico={servico} />
             </div>
           </div>
         </div>
