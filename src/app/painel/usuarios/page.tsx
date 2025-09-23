@@ -70,6 +70,20 @@ export default async function Usuarios() {
         </div>
       </div>
 
+      <div className="secao-descricao container-fluid p-0">
+        <div className="descricao row">
+          <div className="col-12">
+            <div className={["p-1 mt-3 border rounded", styles.boxConteudo].join(" ")}>
+              <div className="row">
+                <div className="col-12">
+                  <p>Cadastro dos funcionários, colaboradores e gestores que trabalham nesta empresa.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="secao-dados container-fluid my-3 p-0">
         <div className="dados row g-3">
           <RegistroAlteracoes />
