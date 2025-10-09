@@ -1,5 +1,5 @@
 # nextjs-cadastro
-Aplicativo NextJs para cadastro de usuários
+Aplicativo NextJS para cadastro de usuários
 
 ## Feito com:
 - React
