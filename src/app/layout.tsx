@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import BootstrapJS from "@/app/components/bootstrapjs/BootstrapJS";
 import { ToastContainer } from "react-toastify";
 import { Bounce } from "react-toastify";
 import localFont from "next/font/local";
@@ -85,7 +83,6 @@ export default function RootLayout({
     <html lang="pt-br" className={ubuntu.className}>
       <body>
         {children}
-        <BootstrapJS />
         <ToastContainer
           position="bottom-right"
           autoClose={5000}
