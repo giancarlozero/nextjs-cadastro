@@ -1,5 +1,8 @@
 'use client'
 
+import { Input } from "../ui/shadcn/input";
+import { FieldLabel } from "../ui/shadcn/field";
+
 import { editarUsuario } from "@/app/actions/usuarios";
 import Link from "next/link";
 import { toast } from "react-toastify";
@@ -47,70 +50,82 @@ export default function EditarUsuarioForm({ usuario }: { usuario: Usuario }) {
   }
 
   return(
-    <div className="secao-dados container-fluid my-3 p-0">
-      <div className="dados row">
-        <div className="col-12">
-          <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
-            <form onSubmit={handleSubmit}>
-              {/* Nome do usuário como valor pré-preenchido */}
-              <label htmlFor="nome">Nome</label>
-              <input
-                type="text"
-                name="nome"
-                className="form-control"
-                id="nome"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-              />
+    <div className={["secao-dados flex flex-col md:flex-row m-2 p-2 mb-3 gap-2 border rounded", styles.boxConteudo].join(" ")}>
+      <div className="info w-[100%] md:w-[40%]">
+        <p>Edite os valores dos campos desejados no formulário para atualizar as informações deste(a) usuário(a)</p>
 
-              {/* Sobrenome do usuário como valor pré-preenchido */}
-              <label htmlFor="sobrenome">Sobrenome</label>
-              <input
-                type="text"
-                name="sobrenome"
-                className="form-control"
-                id="sobrenome"
-                value={sobrenome}
-                onChange={(e) => setSobrenome(e.target.value)}
-              />
+        <p>Somente o(a) próprio(a) usuário(a) ou um(a) administrador(a) poderá alterar sua senha de acesso ao sistema.</p>
 
-              {/* Setor do usuário como valor pré-preenchido */}
-              <label htmlFor="setor">Setor</label>
-              <input
-                type="text"
-                name="setor"
-                className="form-control"
-                id="setor"
-                value={setor}
-                onChange={(e) => setSetor(e.target.value)}
-              />
+        <p><strong>Todos os campos são obrigatórios.</strong></p>
+      </div>
 
-              {/* Cargo do usuário como valor pré-preenchido */}
-              <label htmlFor="cargo">Cargo</label>
-              <input
-                type="text"
-                name="cargo"
-                className="form-control"
-                id="cargo"
-                value={cargo}
-                onChange={(e) => setCargo(e.target.value)}
-              />
+      <div className="formulario w-[100%] md:w-[60%]">
+        <form onSubmit={handleSubmit}>
+          <fieldset className="mb-3">
+            <p><strong>Dados pessoais e profissionais</strong></p>
 
-              <br/>
-
-              <div className="row">
-                <div className="col d-flex flex-row justify-content-between">
-                  <div className="btn-group">
-                    <Link className="btn btn-secondary" href="/painel/usuarios">Cancelar</Link>
-                    <button className="btn btn-primary" type="submit" disabled={loading}>
-                      {loading ? "Salvando..." : "Salvar alterações"}
-                    </button>
-                  </div>
-                </div>
+            <div className="flex flex-col md:flex-row gap-3">
+              <div className="w-[100%] md:w-[50%]">
+                <FieldLabel htmlFor="nome">Nome</FieldLabel>
+                <Input
+                    type="text"
+                    name="nome"
+                    className="w-full bg-white rounded p-2 mb-1"
+                    id="nome"
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
+                  />
               </div>
-            </form>
+
+              <div className="w-[100%] md:w-[50%]">
+                <FieldLabel htmlFor="sobrenome">Sobrenome</FieldLabel>
+                <Input
+                  type="text"
+                  name="sobrenome"
+                  className="w-full bg-white rounded p-2 mb-1"
+                  id="sobrenome"
+                  value={sobrenome}
+                  onChange={(e) => setSobrenome(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-3">
+              <div className="w-[100%] md:w-[50%]">
+                {/* Setor do usuário como valor pré-preenchido */}
+                <FieldLabel htmlFor="setor">Setor</FieldLabel>
+                <Input
+                  type="text"
+                  name="setor"
+                  className="w-full bg-white rounded p-2 mb-1"
+                  id="setor"
+                  value={setor}
+                  onChange={(e) => setSetor(e.target.value)}
+                />
+              </div>
+
+              <div className="w-[100%] md:w-[50%]">
+                {/* Cargo do usuário como valor pré-preenchido */}
+                <FieldLabel htmlFor="cargo">Cargo</FieldLabel>
+                <Input
+                  type="text"
+                  name="cargo"
+                  className="w-full bg-white rounded p-2 mb-1"
+                  id="cargo"
+                  value={cargo}
+                  onChange={(e) => setCargo(e.target.value)}
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <div className="flex flex-row gap-2 align-end justify-end-safe">
+            <Link className="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded" href="/painel/usuarios">Cancelar</Link>
+            <button className="bg-green-700 hover:bg-green-800 text-white px-2 py-1 rounded" type="submit" disabled={loading}>
+              {loading ? "Salvando..." : "Salvar alterações"}
+            </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

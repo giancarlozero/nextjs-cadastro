@@ -23,17 +23,13 @@ export default async function ConfirmarApagarUsuario({ params }: UsuarioApagadoP
 
   return (
     <>
-      <div className="secao-titulo container-fluid p-0">
-        <div className="titulo row">
-          <div className="col-12">
-            <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
-              <h1>Apagar usuário(a)</h1>
-            </div>
-          </div>
-        </div>
+      
+      <div className={["secao-titulo m-2 px-2 border rounded", styles.boxConteudo].join(" ")}>
+        <h1>Apagar usuário(a)</h1>
       </div>
+          
 
-      <div className="secao-dados container-fluid my-3 p-0">
+      <div className="secao-dados container-fluid my-3 px-2">
         <div className="dados row g-3">
           <div className="col">
             <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
@@ -45,7 +41,9 @@ export default async function ConfirmarApagarUsuario({ params }: UsuarioApagadoP
                 <li>Cargo: <strong>{usuario.cargo}</strong></li>
               </ul>
 
-              <p className="text-danger"><strong>ATENÇÃO: esta ação é irreversível.</strong> Recomenda-se fazer um backup antes de apagar quaisquer dados.</p>
+              <div className="w-fit block bg-red-700 p-2 my-2 rounded">
+                <p className="text-white mt-2"><strong>ATENÇÃO: esta ação é irreversível.</strong> Recomenda-se fazer um backup antes de apagar quaisquer dados.</p>
+              </div>
 
               <ApagarUsuarioForm usuario={usuario} />
             </div>

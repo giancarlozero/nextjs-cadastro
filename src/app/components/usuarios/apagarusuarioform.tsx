@@ -29,13 +29,15 @@ export default function ApagarUsuarioForm({ usuario }: { usuario: Usuario }) {
       <form onSubmit={handleSubmit}>
         <input type="hidden" name="id" value={usuario.id} />
 
-        <div className="row">
-          <div className="col d-flex flex-row justify-content-between">
-            <div className="btn-group">
-              <Link className="btn btn-secondary" href="/painel/usuarios">Cancelar</Link>
-              <button className="btn btn-danger" type="submit">Apagar usuário</button>
-            </div>
-          </div>
+        <div className="flex flex-row gap-2 align-end justify-end-safe">
+          <Link
+            className="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded"
+            href="/painel/usuarios"
+          >Cancelar</Link>
+          <button
+            className="bg-red-700 hover:bg-red-800 text-white px-2 py-1 rounded"
+            type="submit"
+          >Apagar usuário</button>
         </div>
       </form>
     </>
