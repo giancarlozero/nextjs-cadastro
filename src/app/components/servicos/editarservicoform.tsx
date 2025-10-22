@@ -45,38 +45,43 @@ export default function EditarServicoForm({ servico }: { servico: Servico }) {
   }
 
   return(
-    <div className="secao-dados container-fluid my-3 p-0">
-      <div className="dados row">
-        <div className="col-12">
-          <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
-            <form onSubmit={handleSubmit}>
+    <div className={["secao-dados flex flex-col md:flex-row m-2 p-2 mb-3 gap-2 border rounded", styles.boxConteudo].join(" ")}>
+      <div className="info w-[100%] md:w-[40%]">
+        <p>Edite os valores dos campos desejados no formulário para atualizar as informações deste serviço.</p>
+
+        <p><strong>Todos os campos são obrigatórios.</strong></p>
+      </div>
+      <div className="formulario w-[100%] md:w-[60%]">
+        <form onSubmit={handleSubmit}>
+          <div className="flex flex-col md:flex-row gap-3">
+            <div className="w-[100%] md:w-[50%]">
               {/* Título do serviço como valor pré-preenchido */}
               <label htmlFor="titulo">Título do serviço</label>
-              <input type="text" name="titulo" className="form-control" id="titulo" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
+              <input type="text" name="titulo" className="w-full bg-white rounded p-2 mb-1" id="titulo" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
+            </div>
 
+            <div className="w-[100%] md:w-[50%]">
               {/* Preço cobrado pelo serviço como valor pré-preenchido */}
               <label htmlFor="preco">Preço (em R$)</label>
-              <input type="number" name="preco" className="form-control" id="preco" value={preco} onChange={(e) => setPreco(e.target.value)} />
+              <input type="number" name="preco" className="w-full bg-white rounded p-2 mb-1" id="preco" value={preco} onChange={(e) => setPreco(e.target.value)} />
+            </div>
+          </div>
 
+          <div className="flex flex-col md:flex-row gap-3">
+            <div className="w-[100%]">
               {/* Descrição do serviço como valor pré-preenchido */}
               <label htmlFor="descricao">Descrição</label>
-              <textarea name="descricao" className="form-control" id="descricao" rows="5" value={descricao} onChange={(e) => setDescricao(e.target.value)} />
-
-              <br/>
-
-              <div className="row">
-                <div className="col d-flex flex-row justify-content-between">
-                  <div className="btn-group">
-                    <Link className="btn btn-secondary" href="/painel/servicos">Cancelar</Link>
-                    <button className="btn btn-primary" type="submit" disabled={loading}>
-                      {loading ? "Salvando..." : "Salvar alterações"}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
+              <textarea name="descricao" className="w-full bg-white rounded p-2 mb-1" id="descricao" rows="5" value={descricao} onChange={(e) => setDescricao(e.target.value)} />
+            </div>
           </div>
-        </div>
+
+          <div className="flex flex-row gap-2 align-end justify-end-safe">
+            <Link className="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded" href="/painel/servicos">Cancelar</Link>
+            <button className="bg-green-700 hover:bg-green-800 text-white px-2 py-1 rounded" type="submit" disabled={loading}>
+              {loading ? "Salvando..." : "Salvar alterações"}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
