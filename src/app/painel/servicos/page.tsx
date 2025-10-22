@@ -31,49 +31,26 @@ export default async function Servicos() {
 
   return (
     <>
-      <div className="secao-titulo container-fluid p-0">
-        <div className="titulo row">
-          <div className="col-12">
-            <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
-              <div className="row">
-                <div className="col-10">
-                  <h1>Cadastro de serviços</h1>
-                </div>
-                <div className="col-2 d-flex flex-row justify-content-end">
-                  <Link className="btn btn-success" href="/painel/servicos/criar">Criar serviço</Link>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className={["secao-titulo flex flex-row items-center justify-items-center m-2 p-2 border rounded", styles.boxConteudo].join(" ")}>
+        <div className="w-full">
+          <h1>Cadastro de serviços</h1>
+          <p>Cadastro dos serviços oferecidos por esta empresa a seus clientes.</p>
+        </div>
+        <div className="w-1/12">
+          <Link className="bg-green-700 hover:bg-green-800 text-white px-5 py-3 rounded" href="/painel/servicos/criar">Criar serviço</Link>
         </div>
       </div>
 
-      <div className="secao-descricao container-fluid p-0">
-        <div className="descricao row">
-          <div className="col-12">
-            <div className={["p-1 mt-3 border rounded", styles.boxConteudo].join(" ")}>
-              <div className="row">
-                <div className="col-12">
-                  <p>Cadastro dos serviços oferecidos por esta empresa a seus clientes.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="secao-dados flex flex-row gap-2.5 m-2">
+        <RegistroAlteracoes />
 
-      <div className="secao-dados container-fluid my-3 p-0 p-0">
-        <div className="dados row g-3">
-          <RegistroAlteracoes />
+        <div className="w-9/12">
+          <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
+            <h2>Todos os serviços</h2>
+            <Suspense>
+              <ServicosTabela servicos={datasFormatadasServicos} />
+            </Suspense>
 
-          <div className="col-9">
-            <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
-              <h2>Todos os serviços</h2>
-              <Suspense>
-                <ServicosTabela servicos={datasFormatadasServicos} />
-              </Suspense>
-
-            </div>
           </div>
         </div>
       </div>

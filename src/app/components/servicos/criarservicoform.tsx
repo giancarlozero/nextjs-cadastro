@@ -1,5 +1,9 @@
 'use client'
 
+import { Input } from "../ui/shadcn/input";
+import { FieldLabel } from "../ui/shadcn/field";
+import { Textarea } from "../ui/shadcn/textarea";
+
 import Link from "next/link";
 import { criarServico } from "@/app/actions/servicos";
 import { toast } from "react-toastify";
@@ -22,33 +26,38 @@ export default function CriarServicoForm() {
   }
 
   return(
-    <div className="secao-dados container-fluid my-3 p-0">
-      <div className="dados row">
-        <div className="col-12">
-          <div className={["p-2 border rounded", styles.boxConteudo].join(" ")}>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="titulo">Título do serviço</label>
-              <input className="form-control" type="text" name="titulo" id="titulo" required />
+    <div className={["secao-dados flex flex-col md:flex-row m-2 p-2 mb-3 gap-2 border rounded", styles.boxConteudo].join(" ")}>
+      <div className="info w-[100%] md:w-[40%]">
+        <p>Preencha o formulário e crie um novo serviço neste sistema com os dados desejados. Defina aqui o título/nome do serviço, o preço a ser cobrado por ele e dê uma breve descrição do serviço para facilitar o entendimento.</p>
 
-              <label htmlFor="preco">Preço (em Reais)</label>
-              <input className="form-control" type="number" step="0.01" name="preco" id="preco" required />
+        <p><strong>Todos os campos são obrigatórios.</strong></p>
+      </div>
+      <div className="formulario w-[100%] md:w-[60%]">
+        <form onSubmit={handleSubmit}>
+          <div className="flex flex-col md:flex-row gap-3">
+            <div className="w-[100%] md:w-[50%]">
+              <FieldLabel htmlFor="titulo">Título do serviço</FieldLabel>
+              <Input className="w-full bg-white rounded p-2 mb-1" type="text" name="titulo" id="titulo" required />
+            </div>
 
-              <label htmlFor="descricao">Descrição</label>
-              <textarea name="descricao" className="form-control" id="descricao" rows="5" required />
-
-              <br/>
-
-              <div className="row">
-                <div className="col d-flex flex-row justify-content-between">
-                  <div className="btn-group">
-                    <Link className="btn btn-secondary" href="/painel/servicos">Cancelar</Link>
-                    <button className="btn btn-primary" type="submit">Criar serviço</button>
-                  </div>
-                </div>
-              </div>
-            </form>
+            <div className="w-[100%] md:w-[50%]">
+              <FieldLabel htmlFor="preco">Preço (em Reais)</FieldLabel>
+              <Input className="w-full bg-white rounded p-2 mb-1" type="number" step="0.01" name="preco" id="preco" required />
+            </div>
           </div>
-        </div>
+
+          <div className="flex flex-col md:flex-row gap-3">
+            <div className="w-[100%]">
+              <FieldLabel htmlFor="descricao">Descrição</FieldLabel>
+              <Textarea name="descricao" className="w-full bg-white rounded p-2 mb-1" id="descricao" rows="5" required />
+            </div>
+          </div>
+
+          <div className="flex flex-row gap-2 align-end justify-end-safe">
+            <Link className="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded" href="/painel/servicos">Cancelar</Link>
+            <button className="bg-green-700 hover:bg-green-800 text-white px-2 py-1 rounded" type="submit">Criar serviço</button>
+          </div>
+        </form>
       </div>
     </div>
   );

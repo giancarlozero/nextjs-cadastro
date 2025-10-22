@@ -29,13 +29,15 @@ export default function ApagarServicoForm({ servico }: { servico: Servico }) {
       <form onSubmit={handleSubmit}>
         <input type="hidden" name="id" value={servico.id} />
 
-        <div className="row">
-          <div className="col d-flex flex-row justify-content-between">
-            <div className="btn-group">
-              <Link className="btn btn-secondary" href="/painel/servicos">Cancelar</Link>
-              <button className="btn btn-danger" type="submit">Apagar serviço</button>
-            </div>
-          </div>
+        <div className="flex flex-row gap-2 align-end justify-end-safe">
+          <Link
+            className="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded"
+            href="/painel/servicos"
+          >Cancelar</Link>
+          <button
+            className="bg-red-700 hover:bg-red-800 text-white px-2 py-1 rounded"
+            type="submit"
+          >Apagar serviço</button>
         </div>
       </form>
     </>

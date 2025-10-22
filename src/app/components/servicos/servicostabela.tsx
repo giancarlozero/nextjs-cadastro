@@ -22,38 +22,36 @@ export default function ServicosTabela({ servicos }: { servicos: ServicoProps[] 
 
   return(
     <>
-      <div className="table-responsive">
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th className="text-center">Título</th>
-              <th className="text-center">Descrição</th>
-              <th className="text-center">Preço (R$)</th>
-              <th className="text-center">Criado em</th>
-              <th className="text-center">Atualizado em</th>
-              <th className="text-center">Opções de edição</th>
-            </tr>
-          </thead>
-          <tbody>
-          {/* Obtém os serviços salvos na tabela "Serviço" do banco e os exibe, um em cada linha de uma tabela HTML */}
-          {servicos.map((servico) => (
-            <tr key={servico.id}>
-              <td>{servico.titulo}</td>
-              <td>{servico.descricao}</td>
-              <td className="text-center">{servico.preco}</td>
-              <td className="text-center">{servico.criado_em}</td>
-              <td className="text-center">{servico.atualizado_em}</td>
-              <td className="text-center">
-                <div className="btn-group" role="group" aria-label="Opções de edição">
-                  <Link className="btn btn-secondary btn-sm" href={`/painel/servicos/${servico.id}/editar`}>Editar</Link>
-                  <Link className="btn btn-danger btn-sm" href={`/painel/servicos/${servico.id}/apagar`}>Apagar</Link>
-                </div>
-              </td>
-            </tr>
-          ))}
-          </tbody>
-        </table>
-      </div>
+      <table className="table-auto w-full text-md bg-white shadow-md rounded mb-4">
+        <thead>
+          <tr className="border-b">
+            <th className="text-center p-3">Título</th>
+            <th className="text-center p-3">Descrição</th>
+            <th className="text-center p-3">Preço (R$)</th>
+            <th className="text-center p-3">Criado em</th>
+            <th className="text-center p-3">Atualizado em</th>
+            <th className="text-center p-3">Opções de edição</th>
+          </tr>
+        </thead>
+        <tbody>
+        {/* Obtém os serviços salvos na tabela "Serviço" do banco e os exibe, um em cada linha de uma tabela HTML */}
+        {servicos.map((servico) => (
+          <tr className="border-b bg-gray-100" key={servico.id}>
+            <td className="p-3">{servico.titulo}</td>
+            <td className="p-3">{servico.descricao}</td>
+            <td className="text-center p-3">{servico.preco}</td>
+            <td className="text-center p-3">{servico.criado_em}</td>
+            <td className="text-center p-3">{servico.atualizado_em}</td>
+            <td className="text-center p-3">
+              <div className="flex flex-row items-center justify-center gap-1" role="group" aria-label="Opções de edição">
+                <Link className="bg-blue-700 hover:bg-blue-800 text-white px-2 py-1 rounded" href={`/painel/servicos/${servico.id}/editar`}>Editar</Link>
+                <Link className="bg-red-700 hover:bg-red-800 text-white px-2 py-1 rounded" href={`/painel/servicos/${servico.id}/apagar`}>Apagar</Link>
+              </div>
+            </td>
+          </tr>
+        ))}
+        </tbody>
+      </table>
     </>
   );
 }

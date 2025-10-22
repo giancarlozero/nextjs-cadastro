@@ -23,38 +23,36 @@ export default function UsuariosTabela({ usuarios }: { usuarios: UsuarioProps[] 
 
   return(
     <>
-      <div className="table-responsive">
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th className="text-center">Nome</th>
-              <th className="text-center">Setor</th>
-              <th className="text-center">Cargo</th>
-              <th className="text-center">Criado em</th>
-              <th className="text-center">Atualizado em</th>
-              <th className="text-center">Opções de edição</th>
-            </tr>
-          </thead>
-          <tbody>
-          {/* Obtém os usuários salvos na tabela "Usuários" do banco e os exibe, um em cada linha de uma tabela HTML */}
-          {usuarios.map((usuario) => (
-            <tr key={usuario.id}>
-              <td>{usuario.nome} {usuario.sobrenome}</td>
-              <td className="text-center">{usuario.setor}</td>
-              <td className="text-center">{usuario.cargo}</td>
-              <td className="text-center">{usuario.criado_em}</td>
-              <td className="text-center">{usuario.atualizado_em}</td>
-              <td className="text-center">
-                <div className="btn-group" role="group" aria-label="Opções de edição">
-                  <Link className="btn btn-secondary btn-sm" href={`/painel/usuarios/${usuario.id}/editar`}>Editar</Link>
-                  <Link className="btn btn-danger btn-sm" href={`/painel/usuarios/${usuario.id}/apagar`}>Apagar</Link>
-                </div>
-              </td>
-            </tr>
-          ))}
-          </tbody>
-        </table>
-      </div>
+      <table className="table-auto w-full text-md bg-white shadow-md rounded mb-4">
+        <thead>
+          <tr className="border-b">
+            <th className="text-center p-3">Nome</th>
+            <th className="text-center p-3">Setor</th>
+            <th className="text-center p-3">Cargo</th>
+            <th className="text-center p-3">Criado em</th>
+            <th className="text-center p-3">Atualizado em</th>
+            <th className="text-center p-3">Opções de edição</th>
+          </tr>
+        </thead>
+        <tbody>
+        {/* Obtém os usuários salvos na tabela "Usuários" do banco e os exibe, um em cada linha de uma tabela HTML */}
+        {usuarios.map((usuario) => (
+          <tr className="border-b bg-gray-100" key={usuario.id}>
+            <td className="p-3">{usuario.nome} {usuario.sobrenome}</td>
+            <td className="text-center p-3">{usuario.setor}</td>
+            <td className="text-center p-3">{usuario.cargo}</td>
+            <td className="text-center p-3">{usuario.criado_em}</td>
+            <td className="text-center p-3">{usuario.atualizado_em}</td>
+            <td className="text-center p-3">
+              <div className="flex flex-row items-center justify-center gap-1" role="group" aria-label="Opções de edição">
+                <Link className="bg-blue-700 hover:bg-blue-800 text-white px-2 py-1 rounded" href={`/painel/usuarios/${usuario.id}/editar`}>Editar</Link>
+                <Link className="bg-red-700 hover:bg-red-800 text-white px-2 py-1 rounded" href={`/painel/usuarios/${usuario.id}/apagar`}>Apagar</Link>
+              </div>
+            </td>
+          </tr>
+        ))}
+        </tbody>
+      </table>
     </>
   );
 }

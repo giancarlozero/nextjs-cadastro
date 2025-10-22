@@ -5,17 +5,12 @@ import styles from "@/app/components/ui/dashboardnav.module.css"
 
 export default function DashboardNav(){
   return(<>
-      <nav className={["btn-group", styles.navegacao].join(" ")}>
-        <Link href="/painel" className="btn btn-dark">Início</Link>
-        <Link href="/painel/usuarios" className="btn btn-dark">Usuários</Link>
-        <Link href="/painel/servicos" className="btn btn-dark">Serviços</Link>
-        {/* <Link href="#" className="btn btn-dark">Clientes</Link> */}
-        {/* <Link href="#" className="btn btn-dark">Tarefas</Link> */}
-      </nav>
-
-      <nav className={["btn-group", styles.navegacao].join(" ")}>
-        {/* <Link href="/painel/auditoria" className="btn btn-dark"><UserCheck size={20} color="#FFFFFF" /> Auditoria</Link> */}
-      </nav>
+      <Link className="px-3 py-2 bg-gray-800 hover:bg-gray-600 text-white rounded" href="/painel">Início</Link>
+      <Link className="px-3 py-2 bg-gray-800 hover:bg-gray-600 text-white rounded" href="/painel/usuarios">Usuários</Link>
+      <Link className="px-3 py-2 bg-gray-800 hover:bg-gray-600 text-white rounded" href="/painel/servicos">Serviços</Link>
+      {/* <Link href="#">Clientes</Link> */}
+      {/* <Link href="#">Tarefas</Link> */}
+      {/* <Link href="/painel/auditoria"><UserCheck size={20} color="#FFFFFF" /> Auditoria</Link> */}
     </>
   );
 }
