@@ -8,7 +8,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Usuário que operará o sistema, gerenciando empresas e tarefas
+// Usuário que operará o sistema, gerenciando usuários (caso seja administrador), clientes e tarefas
 model Usuario {
   id            String   @id @default(cuid())
   nome          String
@@ -25,6 +25,7 @@ model Usuario {
   logs    UsuarioLog[]
 }
 
+// Registro de alterações de usuários
 model UsuarioLog {
   id        String   @id @default(cuid())
   usuarioId String?
