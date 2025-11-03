@@ -14,7 +14,7 @@ export async function criarServico(formData: FormData) {
     // O valor numérico obtido do formulário sempre vem como string. Convertê-lo para float
     const precoFloat = parseFloat(preco)
 
-    // Salva os dados do novo usuário no banco
+    // Salva os dados do novo serviço no banco
     await prisma.servico.create({
       data: {
         titulo,
@@ -42,7 +42,7 @@ export async function criarServico(formData: FormData) {
 // ==============
 export async function editarServico(servicoId: string, formData: FormData) {
   try {
-    // Verifica se o ID do usuário foi coletado corretamente
+    // Verifica se o ID do serviço foi coletado corretamente
     if (!servicoId || servicoId.trim() === '') {
       throw new Error('ID de serviço inválido.');
     }
