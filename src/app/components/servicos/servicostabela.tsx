@@ -16,7 +16,7 @@ export default function ServicosTabela({ servicos }: { servicos: ServicoProps[] 
   // Se não houver nenhum serviço na tabela, retorna a mensagem
   if(!servicos || servicos.length === 0) {
     return (
-      <p>Nenhum serviço cadastrado ainda. Clique no botão "Criar serviço" e comece a cadastrar alguns!</p>
+      <p>Nenhum serviço cadastrado ainda. Clique no botão "Novo serviço" e comece a cadastrar alguns!</p>
     )
   }
 

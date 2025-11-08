@@ -31,6 +31,10 @@ p {
   margin-bottom: 10px;
 }
 
+.linksimples {
+  text-decoration: underline;
+}
+
 .cta, .login {
   min-height: 50vh;
 }

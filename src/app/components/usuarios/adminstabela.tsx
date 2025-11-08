@@ -18,7 +18,7 @@ export default function AdminsTabela({ admins }: { admins: AdminProps[] }) {
   // Se não houver nenhum usuário na tabela, retorna a mensagem
   if(!admins || admins.length === 0) {
     return (
-      <p>Nenhum administrador cadastrado ainda. Clique no botão "Criar usuário" e comece a cadastrar alguns!</p>
+      <p>Nenhum administrador cadastrado ainda. Clique no botão "Novo usuário" e comece a cadastrar alguns!</p>
     )
   }
 

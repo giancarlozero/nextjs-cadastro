@@ -92,8 +92,14 @@ export default function CriarUsuarioForm() {
           </fieldset>
 
           <div className="flex flex-row gap-2 align-end justify-end-safe">
-            <Link className="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded" href="/painel/usuarios">Cancelar</Link>
-            <button className="bg-green-700 hover:bg-green-800 text-white px-2 py-1 rounded" type="submit">Criar usuário</button>
+            <Link
+              className="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded"
+              href="/painel/usuarios"
+            >Cancelar</Link>
+            <button
+              className="bg-green-700 hover:bg-green-800 text-white px-2 py-1 rounded"
+              type="submit"
+            >Criar usuário</button>
           </div>
         </form>
       </div>

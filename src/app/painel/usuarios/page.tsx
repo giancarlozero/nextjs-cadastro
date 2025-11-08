@@ -58,8 +58,11 @@ export default async function Usuarios() {
           <h1>Cadastro de usuários</h1>
             <p>Cadastro dos funcionários, colaboradores e gestores que trabalham nesta empresa.</p>
         </div>
-        <div className="w-1/12">
-          <Link className="bg-green-700 hover:bg-green-800 text-white px-5 py-3 rounded" href="/painel/usuarios/criar">Criar usuário</Link>
+        <div className="w-2/12 flex flex-row justify-end">
+          <Link
+            className="bg-green-700 hover:bg-green-800 text-white px-5 py-3 rounded"
+            href="/painel/usuarios/criar"
+          >Novo usuário</Link>
         </div>
       </div>
 

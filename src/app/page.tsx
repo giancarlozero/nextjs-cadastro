@@ -5,6 +5,7 @@ export default function Home() {
     <div className="flex flex-col md:flex-row">
       <div className="cta h-screen w-[70%] flex flex-col items-center justify-center p-5">
         <div className="cta-texto">
+          <img src="https://placehold.co/500x265?text=Logo" alt="" />
           <h1>Lorem Ipsum</h1>
           <p>Dolor Sit Amet Dolor Sit Amet Dolor Sit Amet Dolor Sit Amet </p>
         </div>
@@ -24,11 +25,11 @@ export default function Home() {
 
           <br />
 
-          <Link href="#">Esqueci minha senha</Link>
+          <Link className="linksimples" href="#">Esqueci minha senha</Link>
 
           <br />
 
-          <Link href="/painel">Painel (link temporário dev)</Link>
+          <Link className="linksimples" href="/painel">Painel (link temporário dev)</Link>
         </form>
       </div>
     </div>
