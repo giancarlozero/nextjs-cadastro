@@ -5,29 +5,37 @@ import RegistroAlteracoes from "@/app/components/usuarios/registroalteracoes";
 import ClientesTabela from "@/app/components/clientes/clientestabela";
 import styles from '@/app/painel/painel.module.css'
 
-export default async function Usuarios() {
+export default async function Clientes() {
 
   // RECUPERAR todos os clientes
   // ==================================
   const clientes = await prisma.cliente.findMany({
+    include: {
+      servicos: true,
+    },
     orderBy: {
       nome: 'asc'
     }
-  })
+  });
 
-  // Formatação de data para o padrão brasileiro (exemplo: 01 de janeiro de 2000)
-  const dataFormato: Intl.DateTimeFormatOptions = {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
+  // Formatação das datas de criação e atualização
+  // =============================================
+  function formatarData(date: Date) {
+    return date.toLocaleString("pt-BR", {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    })
   }
 
-  // Aplicação das datas formatadas no componente 'clientestabela.tsx'
-  const datasFormatadasClientes = clientes.map((u) => ({
-    ...u,
-    criado_em: u.criado_em.toLocaleDateString('pt-BR', dataFormato),
-    atualizado_em: u.atualizado_em.toLocaleDateString('pt-BR', dataFormato)
-  }))
+  const clientesComValorContratado = clientes.map((c) => ({
+    id: c.id,
+    nome: c.nome,
+    documento: c.documento,
+    valor: c.valor,
+    criado_em: formatarData(c.criado_em),
+    atualizado_em: formatarData(c.atualizado_em),
+  }));
 
   return (
     <>
@@ -52,7 +60,7 @@ export default async function Usuarios() {
             <h2>Todos os clientes</h2>
 
             <Suspense>
-              <ClientesTabela clientes={datasFormatadasClientes} />
+              <ClientesTabela clientes={clientesComValorContratado} />
             </Suspense>
 
           </div>

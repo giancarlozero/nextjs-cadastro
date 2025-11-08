@@ -11,13 +11,16 @@ export async function criarCliente(formData: FormData) {
     const documento = formData.get('documento') as string;
 
     // Recebe os dados dos serviços selecionados e respectivas quantidades
-    const servicosSelecionados = JSON.parse(formData.get("servicosSelectionados")?.toString() || "[]");
-
-    // const valor = formData.get('valor') as string
-    const descricao = formData.get('descricao') as string;
+    const servicosSelecionados = JSON.parse(
+      formData.get("servicosSelecionados")?.toString() || "[]"
+    );
 
     // Calcula no backend o valor total dos serviços selecionados
-    const valorTotal = servicosSelecionados.reduce((acc: number, s: any) => acc + s.preco * s.quantidade, 0);
+    const valorTotal = servicosSelecionados.reduce(
+      (acc: number, s: any) => acc + s.preco * s.quantidade, 0
+    );
+
+    const descricao = formData.get('descricao') as string;
 
     // Salva os dados do novo usuário no banco
     await prisma.cliente.create({
