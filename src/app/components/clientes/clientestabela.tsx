@@ -1,19 +1,22 @@
 'use client'
 
 import Link from "next/link"
-// import { UserCheck, UserX } from "@deemlol/next-icons"
 
-type ClienteProps = {
-  id: string,
-  nome: string,
-  documento: string,
-  valor: string,
+interface Cliente {
+  id: string;
+  nome: string;
+  documento: string;
+  valor: number;
   criado_em: string,
   atualizado_em: string,
 }
 
-export default function ClientesTabela({ clientes }: { clientes: ClienteProps[] }) {
-  // Se não houver nenhum serviço na tabela, retorna a mensagem
+interface ClientesTabelaProps {
+  clientes: Cliente[];
+}
+
+export default function ClientesTabela({ clientes }: ClientesTabelaProps) {
+  // Se não houver nenhum cliente na tabela, retorna a mensagem
   if(!clientes || clientes.length === 0) {
     return (
       <p>Nenhum cliente cadastrado ainda. Clique no botão "Novo cliente" e comece a cadastrar alguns!</p>
@@ -34,14 +37,16 @@ export default function ClientesTabela({ clientes }: { clientes: ClienteProps[] 
           </tr>
         </thead>
         <tbody>
-        {/* Obtém os serviços salvos na tabela "Serviço" do banco e os exibe, um em cada linha de uma tabela HTML */}
+        {/* Obtém os clientes salvos na tabela "Cliente" do banco e os exibe, um em cada linha de uma tabela HTML */}
         {clientes.map((cliente) => (
           <tr className="border-b bg-gray-100" key={cliente.id}>
             <td className="p-3">{cliente.nome}</td>
             <td className="p-3">{cliente.documento}</td>
-            <td className="text-center p-3">{cliente.valor}</td>
+            <td className="text-center p-3">{cliente.valor?.toFixed(2)}</td>
             <td className="text-center p-3">{cliente.criado_em}</td>
-            <td className="text-center p-3">{cliente.atualizado_em}</td>
+            <td className="text-center p-3">
+              {cliente.criado_em === cliente.atualizado_em ? '-' : cliente.atualizado_em}
+              </td>
             <td className="text-center p-3">
               <div className="flex flex-row items-center justify-center gap-1" role="group" aria-label="Opções de edição">
                 <Link

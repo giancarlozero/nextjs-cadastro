@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default function ClientesDescricao() {
+export default function CriarClientesDescricao() {
   return (
     <>
       <p>Preencha o formulário e crie um novo cliente neste sistema com os dados desejados. Defina aqui o nome completo ou razão social do cliente, o documento (CPF ou CNPJ) e descreva-o para facilitar a identificação.</p>

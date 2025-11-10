@@ -3,7 +3,7 @@
 import { Input } from "../ui/shadcn/input";
 import { FieldLabel } from "../ui/shadcn/field";
 import { Textarea } from "../ui/shadcn/textarea";
-import ClientesDescricao from "./clientesdescricao";
+import CriarClientesDescricao from "./criarclientesdescricao";
 import { useState, useEffect } from "react";
 import { criarCliente } from "@/app/actions/clientes";
 import Link from "next/link";
@@ -76,7 +76,7 @@ export default function CriarClienteForm() {
   return(<>
     <div className={["secao-dados flex flex-col md:flex-row m-2 p-2 mb-3 gap-2 border rounded", styles.boxConteudo].join(" ")}>
       <div className="info w-[100%] md:w-[40%]">
-        <ClientesDescricao />
+        <CriarClientesDescricao />
       </div>
       <div className="formulario w-[100%] md:w-[60%]">
         <form onSubmit={handleSubmit}>
