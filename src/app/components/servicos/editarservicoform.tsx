@@ -48,8 +48,6 @@ export default function EditarServicoForm({ servico }: { servico: Servico }) {
     <div className={["secao-dados flex flex-col md:flex-row m-2 p-2 mb-3 gap-2 border rounded", styles.boxConteudo].join(" ")}>
       <div className="info w-[100%] md:w-[40%]">
         <p>Edite os valores dos campos desejados no formulário para atualizar as informações deste serviço.</p>
-
-        <p><strong>Todos os campos são obrigatórios.</strong></p>
       </div>
       <div className="formulario w-[100%] md:w-[60%]">
         <form onSubmit={handleSubmit}>
@@ -70,8 +68,8 @@ export default function EditarServicoForm({ servico }: { servico: Servico }) {
           <div className="flex flex-col md:flex-row gap-3">
             <div className="w-[100%]">
               {/* Descrição do serviço como valor pré-preenchido */}
-              <label htmlFor="descricao">Descrição</label>
-              <textarea name="descricao" className="w-full bg-white rounded p-2 mb-1" id="descricao" rows="5" value={descricao} onChange={(e) => setDescricao(e.target.value)} />
+              <label htmlFor="descricao">Descrição - OPCIONAL</label>
+              <textarea name="descricao" className="w-full bg-white rounded p-2 mb-1" id="descricao" value={descricao} rows={5} onChange={(e) => setDescricao(e.target.value)} />
             </div>
           </div>
 

@@ -36,8 +36,8 @@ export default async function Servicos() {
           <h1>Cadastro de serviços</h1>
           <p>Cadastro dos serviços oferecidos por esta empresa a seus clientes.</p>
         </div>
-        <div className="w-1/12">
-          <Link className="bg-green-700 hover:bg-green-800 text-white px-5 py-3 rounded" href="/painel/servicos/criar">Criar serviço</Link>
+        <div className="w-2/12 flex flex-row justify-end">
+          <Link className="bg-green-700 hover:bg-green-800 text-white px-5 py-3 rounded" href="/painel/servicos/criar">Novo serviço</Link>
         </div>
       </div>
 

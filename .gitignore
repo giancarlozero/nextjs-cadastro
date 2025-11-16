@@ -45,4 +45,6 @@ next-env.d.ts
 /prisma/migrations/*
 
 /uml
-.vscode/*
+/.vscode/
+
+package-lock.json

@@ -17,7 +17,7 @@ export default function UsuariosTabela({ usuarios }: { usuarios: UsuarioProps[] 
   // Se não houver nenhum usuário na tabela, retorna a mensagem
   if(!usuarios || usuarios.length === 0) {
     return (
-      <p>Nenhum usuário cadastrado ainda. Clique no botão "Criar usuário" e comece a cadastrar alguns!</p>
+      <p>Nenhum usuário cadastrado ainda. Clique no botão "Novo usuário" e comece a cadastrar alguns!</p>
     )
   }
 
