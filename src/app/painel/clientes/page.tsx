@@ -8,7 +8,7 @@ import styles from '@/app/painel/painel.module.css'
 export default async function Clientes() {
 
   // RECUPERAR todos os clientes
-  // ==================================
+  // ===========================
   const clientes = await prisma.cliente.findMany({
     include: {
       servicos: true,
@@ -28,6 +28,8 @@ export default async function Clientes() {
     })
   }
 
+  // Conectar os dados do cliente com os dados dos serviços contratados por esse mesmo cliente
+  // =========================================================================================
   const clientesComValorContratado = clientes.map((c) => ({
     id: c.id,
     nome: c.nome,

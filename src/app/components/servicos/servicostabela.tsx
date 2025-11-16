@@ -44,8 +44,16 @@ export default function ServicosTabela({ servicos }: { servicos: ServicoProps[] 
             <td className="text-center p-3">{servico.atualizado_em}</td>
             <td className="text-center p-3">
               <div className="flex flex-row items-center justify-center gap-1" role="group" aria-label="Opções de edição">
-                <Link className="bg-blue-700 hover:bg-blue-800 text-white px-2 py-1 rounded" href={`/painel/servicos/${servico.id}/editar`}>Editar</Link>
-                <Link className="bg-red-700 hover:bg-red-800 text-white px-2 py-1 rounded" href={`/painel/servicos/${servico.id}/apagar`}>Apagar</Link>
+                <Link
+                  className="bg-blue-700 hover:bg-blue-800 text-white px-2 py-1 rounded"
+                  href={`/painel/servicos/${servico.id}/editar`}
+                >Editar
+                </Link>
+                <Link
+                  className="bg-red-700 hover:bg-red-800 text-white px-2 py-1 rounded"
+                  href={`/painel/servicos/${servico.id}/apagar`}
+                >Apagar
+                </Link>
               </div>
             </td>
           </tr>

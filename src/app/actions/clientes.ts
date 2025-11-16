@@ -10,42 +10,45 @@ export async function criarCliente(formData: FormData) {
     const nome = formData.get('nome') as string;
     const documento = formData.get('documento') as string;
 
-    // Recebe os dados dos serviços selecionados e respectivas quantidades
-    const servicosSelecionados = JSON.parse(
+    // Recebe os dados dos serviços selecionados e respectivas quantidades vindos do formulário
+    const servSelecionados = JSON.parse(
       formData.get("servicosSelecionados")?.toString() || "[]"
     );
 
-    // Calcula no backend o valor total dos serviços selecionados
-    const valorTotal = servicosSelecionados.reduce(
-      (acc: number, s: any) => acc + s.preco * s.quantidade, 0
+    // Calcula no backend o valor total dos serviços selecionados,
+    // considerando a quantidade desejada de cada serviço
+    const valorTotal = servSelecionados.reduce(
+      (acc: number, serv: any) => acc + Number(serv.preco) * serv.quantidade, 0
     );
 
     const descricao = formData.get('descricao') as string;
 
+
     // Salva os dados do novo usuário no banco
-    await prisma.cliente.create({
+    const cliente = await prisma.cliente.create({
       data: {
         nome,
         documento,
-        servicos: servicosSelecionados.length > 0 ? {
-          connect: servicosSelecionados.map((s: any) => ({id: s.id})),
-        } : undefined,
         valor: valorTotal,
-        descricao,
+        descricao: descricao ?? undefined,
       }
-    })
+    });
 
-    // Registra o cliente que foi criado
-    // await prisma.clienteLog.create({
-    //   data: {
-    //     acao: 'CRIADO',
-    //     clienteId: servicoCriado.id,
-    //     detalhes: JSON.stringify({titulo, descricao, preco})
-    //   }
-    // })
+    // Salva as relações entre cliente e serviço na tabela pivot ClienteServico
+    if(servSelecionados.length > 0) {
+      await prisma.clienteServico.createMany({
+        data: servSelecionados.map((serv: any) => ({
+          clienteId: cliente.id,
+          servicoId: serv.id,
+          quantidade: Number(serv.quantidade) || 1,
+          preco: Number(serv.preco) || 0
+        }))
+      });
+    }
 
     return { success: true, message: 'Cliente criado com sucesso.' }
   } catch (error) {
+    console.error('criarCliente error', error);
     return { success: false, message: 'Erro ao criar cliente.' }
   }
 }
@@ -54,28 +57,49 @@ export async function criarCliente(formData: FormData) {
 // ==============
 export async function editarCliente(clienteId: string, formData: FormData) {
   try {
-    // Verifica se o ID do cliente foi coletado corretamente
-    if (!clienteId || clienteId.trim() === '') {
-      throw new Error('ID de cliente inválido.');
-    }
-
+    // Obtém os valores dos demais campos a partir do formulário
     const nome = formData.get('nome') as string;
     const documento = formData.get('documento') as string;
-    const valor = formData.get('valor') as string
-    const descricao = formData.get('descricao') as string;
+    const descricao = formData.get('descricao') as string | null;
 
-    // O valor numérico obtido do formulário sempre vem como string. Convertê-lo para float
-    const valorFloat = parseFloat(valor)
+    // Obtém os serviços selecionados a partir do formulário
+    const servSelecionados = JSON.parse(
+      formData.get('servicosSelecionados')?.toString() || "[]"
+    );
 
+    // Faz o cálculo do valor total dos serviços selecionados
+    const valorTotal = servSelecionados.reduce(
+      (acc: number, serv: any) => acc + Number(serv.preco) * Number(serv.quantidade), 0
+    );
+
+    // Salva os novos dados do cliente
     await prisma.cliente.update({
-      where: { id: clienteId },
+      where: {
+        id: clienteId
+      },
       data: {
         nome,
         documento,
-        valor: valorFloat,
-        descricao
+        descricao: descricao ?? undefined,
+        valor: valorTotal
       }
-    })
+    });
+
+    // Atualiza na tabela pivot as relações cliente x serviço
+    await prisma.clienteServico.deleteMany({
+      where: { clienteId }
+    });
+
+    if(servSelecionados.length > 0) {
+      await prisma.clienteServico.createMany({
+        data: servSelecionados.map((serv: any) => ({
+          clienteId,
+          servicoId: serv.id,
+          quantidade: Number(serv.quantidade) || 1,
+          preco: Number(serv.preco) || 0
+        }))
+      })
+    }
 
     return { success: true, message: 'Cliente editado com sucesso.' }
   } catch {
@@ -86,25 +110,25 @@ export async function editarCliente(clienteId: string, formData: FormData) {
 // APAGAR cliente
 // ==============
 export async function apagarCliente(formData: FormData) {
-  const clienteId = formData.get('id') as string;
+  const clienteApagarId = formData.get('id')
 
-  try {
-    const clienteApagado = await prisma.cliente.findUnique({
-      where: {
-        id: clienteId
-      }
-    })
-
-    if(!clienteApagado) {
+  if(!clienteApagarId) {
       return {
         success: false,
         message: 'Cliente não encontrado(a)',
       }
     }
 
+  try {
+    await prisma.clienteServico.deleteMany({
+      where: {
+        clienteId: clienteApagarId
+      }
+    })
+
     await prisma.cliente.delete({
       where: {
-        id: clienteId
+        id: clienteApagarId
       }
     })
 
