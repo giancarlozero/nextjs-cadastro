@@ -1,0 +1,98 @@
+@startuml "NextJS CRUD"
+
+left to right direction
+
+Class Usuario {
+-- pessoal --
+- id string
+- nome string
+- sobrenome string
+- email string
+-- profissional --
+- nivel_acesso string
+- setor string
+- cargo string
+-- criptografado --
+- senha string
+-- data --
+- criado_em datetime
+- atualizado_em datetime
+}
+
+Class UsuarioLog {
+- id string
+- usuarioId string
+- acao string
+-- data --
+- detalhes string
+- criado_em datetime
+}
+
+Usuario "1" -- "N" UsuarioLog
+
+Class Servico {
+-- dados --
+- id string
+- clienteId string
+- titulo string
+- descricao string
+- preco number
+-- relação --
+- contratado_por ClienteServico[]
+-- data --
+- criado_em datetime
+- atualizado_em datetime
+}
+
+Class Cliente {
+-- dados --
+- id string
+- nome string
+- documento atring
+- valor number
+- descricao string
+- tarefaId String
+-- relação --
+- servicos ClienteServico[]
+- tarefas Tarefa[]
+-- data --
+- criado_em datetime
+- atualizado_em datetime
+}
+
+Class ClienteServico {
+-- dados --
+- id string
+- clienteId string
+- servicoId string
+- quantidade number
+- preco number
+-- relação "N:N" --
+- cliente Cliente
+- servico Servico
+-- data --
+- criado_em datetime
+- atualizado_em datetime
+}
+
+Cliente "N" -- " " ClienteServico
+ClienteServico " " -- "N" Servico
+
+Class Tarefa {
+-- dados --
+- id string
+- clienteId string
+- titulo string
+- descricao string
+- prazo string
+-- relação --
+- demandado_por Cliente
+- responsaveis Usuario[]
+-- data --
+- criado_em datetime
+- atualizado_em datetime
+}
+
+Cliente "1" -- "N" Tarefa
+Tarefa "N" -- "N" Usuario
+@enduml
