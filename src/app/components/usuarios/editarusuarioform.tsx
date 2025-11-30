@@ -51,7 +51,7 @@ export default function EditarUsuarioForm({ usuario }: { usuario: Usuario }) {
 
   return(
     <div className={["secao-dados flex flex-col md:flex-row m-2 p-2 mb-3 gap-2 border rounded", styles.boxConteudo].join(" ")}>
-      <div className="info w-[100%] md:w-[40%]">
+      <div className="info w-full md:w-[40%]">
         <p>Edite os valores dos campos desejados no formulário para atualizar as informações deste(a) usuário(a)</p>
 
         <p>Somente o(a) próprio(a) usuário(a) ou um(a) administrador(a) poderá alterar sua senha de acesso ao sistema.</p>
@@ -59,13 +59,13 @@ export default function EditarUsuarioForm({ usuario }: { usuario: Usuario }) {
         <p><strong>Todos os campos são obrigatórios.</strong></p>
       </div>
 
-      <div className="formulario w-[100%] md:w-[60%]">
+      <div className="formulario w-full md:w-[60%]">
         <form onSubmit={handleSubmit}>
           <fieldset className="mb-3">
             <p><strong>Dados pessoais e profissionais</strong></p>
 
             <div className="flex flex-col md:flex-row gap-3">
-              <div className="w-[100%] md:w-[50%]">
+              <div className="w-full md:w-[50%]">
                 <FieldLabel htmlFor="nome">Nome</FieldLabel>
                 <Input
                     type="text"
@@ -77,7 +77,7 @@ export default function EditarUsuarioForm({ usuario }: { usuario: Usuario }) {
                   />
               </div>
 
-              <div className="w-[100%] md:w-[50%]">
+              <div className="w-full md:w-[50%]">
                 <FieldLabel htmlFor="sobrenome">Sobrenome</FieldLabel>
                 <Input
                   type="text"
@@ -91,7 +91,7 @@ export default function EditarUsuarioForm({ usuario }: { usuario: Usuario }) {
             </div>
 
             <div className="flex flex-col md:flex-row gap-3">
-              <div className="w-[100%] md:w-[50%]">
+              <div className="w-full md:w-[50%]">
                 {/* Setor do usuário como valor pré-preenchido */}
                 <FieldLabel htmlFor="setor">Setor</FieldLabel>
                 <Input
@@ -104,7 +104,7 @@ export default function EditarUsuarioForm({ usuario }: { usuario: Usuario }) {
                 />
               </div>
 
-              <div className="w-[100%] md:w-[50%]">
+              <div className="w-full md:w-[50%]">
                 {/* Cargo do usuário como valor pré-preenchido */}
                 <FieldLabel htmlFor="cargo">Cargo</FieldLabel>
                 <Input

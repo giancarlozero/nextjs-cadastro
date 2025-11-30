@@ -75,18 +75,18 @@ export default function CriarClienteForm() {
 
   return(<>
     <div className={["secao-dados flex flex-col md:flex-row m-2 p-2 mb-3 gap-2 border rounded", styles.boxConteudo].join(" ")}>
-      <div className="info w-[100%] md:w-[40%]">
+      <div className="info w-full md:w-[40%]">
         <CriarClientesDescricao />
       </div>
-      <div className="formulario w-[100%] md:w-[60%]">
+      <div className="formulario w-full md:w-[60%]">
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row gap-3">
-            <div className="w-[100%] md:w-[50%]">
+            <div className="w-full md:w-[50%]">
               <FieldLabel htmlFor="titulo">Nome completo ou Razão Social</FieldLabel>
               <Input className="w-full bg-white rounded p-2 mb-1" type="text" name="nome" id="nome" required />
             </div>
 
-            <div className="w-[100%] md:w-[50%]">
+            <div className="w-full md:w-[50%]">
               <FieldLabel htmlFor="preco">Documento (CPF ou CNPJ)</FieldLabel>
               <Input className="w-full bg-white rounded p-2 mb-1" type="text" name="documento" id="documento" required />
             </div>
@@ -130,7 +130,7 @@ export default function CriarClienteForm() {
           </div>
 
           <div className="flex flex-col md:flex-row gap-3">
-            <div className="w-[100%]">
+            <div className="w-full">
               <FieldLabel htmlFor="descricao">Descrição do cliente - OPCIONAL</FieldLabel>
               <Textarea name="descricao" className="w-full bg-white rounded p-2 mb-1" id="descricao" rows={5} />
             </div>
