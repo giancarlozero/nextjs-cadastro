@@ -39,8 +39,8 @@ export default function CriarServicoForm() {
             </div>
 
             <div className="w-full md:w-[50%]">
-              <FieldLabel htmlFor="preco">Preço (em Reais)</FieldLabel>
-              <Input className="w-full bg-white rounded p-2 mb-1" type="number" step="0.01" name="preco" id="preco" required />
+              <FieldLabel htmlFor="preco">Preço (em R$)</FieldLabel>
+              <Input className="w-full bg-white rounded p-2 mb-1" type="text" name="preco" id="preco" required />
             </div>
           </div>
 

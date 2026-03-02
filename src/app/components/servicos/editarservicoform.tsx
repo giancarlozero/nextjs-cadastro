@@ -61,7 +61,7 @@ export default function EditarServicoForm({ servico }: { servico: Servico }) {
             <div className="w-full md:w-[50%]">
               {/* Preço cobrado pelo serviço como valor pré-preenchido */}
               <label htmlFor="preco">Preço (em R$)</label>
-              <input type="number" name="preco" className="w-full bg-white rounded p-2 mb-1" id="preco" value={preco} onChange={(e) => setPreco(e.target.value)} />
+              <input type="text" name="preco" className="w-full bg-white rounded p-2 mb-1" id="preco" value={preco} onChange={(e) => setPreco(e.target.value)} />
             </div>
           </div>
 
