@@ -49,7 +49,7 @@ export default function PrimeiroAcessoForm() {
           <input
             type="hidden"
             name="nivel_acesso"
-            value="Administrador"
+            value="0"
           />
 
           <div className="flex flex-col md:flex-row gap-3 mb-3">

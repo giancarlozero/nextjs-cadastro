@@ -39,11 +39,11 @@ export default function CriarUsuarioForm() {
 
             <div className="flex flex-col">
               <div className="w-full md:w-[50%]">
-                <input type="radio" name="nivel_acesso" id="acesso-admin" value="Administrador" />
+                <input type="radio" name="nivel_acesso" id="acesso-admin" value="0" />
                 <label htmlFor="nivel_acesso">Administrador</label>
               </div>
               <div className="w-full md:w-[50%]">
-                <input type="radio" name="nivel_acesso" id="acesso-usuario" value="Usuário" />
+                <input type="radio" name="nivel_acesso" id="acesso-usuario" value="1" />
                 <label htmlFor="nivel_acesso">Usuário</label>
               </div>
             </div>

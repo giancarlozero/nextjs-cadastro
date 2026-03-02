@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 
-interface Cliente {
+type ClienteProps = {
   id: string;
   nome: string;
   documento: string;
@@ -11,11 +11,7 @@ interface Cliente {
   atualizado_em: string,
 }
 
-interface ClientesTabelaProps {
-  clientes: Cliente[];
-}
-
-export default function ClientesTabela({ clientes }: ClientesTabelaProps) {
+export default function ClientesTabela({ clientes }: { clientes: ClienteProps[] }) {
   // Se não houver nenhum cliente na tabela, retorna a mensagem
   if(!clientes || clientes.length === 0) {
     return (

@@ -2,9 +2,10 @@ import styles from "@/app/painel/painel.module.css"
 import EditarClienteForm from "@/app/components/clientes/editarclienteform";
 import { prisma } from "@/app/lib/prisma";
 
-export default async function EditarCliente({ params: { id } }: { params: { id: string } }) {
+export default async function EditarCliente(props: {params: Promise<{id: string}>}) {
+  const params = await props.params;
   const cliente = await prisma.cliente.findUnique({
-    where: { id },
+    where: { id: params.id },
     include: {
       servicos: {
         include: {
