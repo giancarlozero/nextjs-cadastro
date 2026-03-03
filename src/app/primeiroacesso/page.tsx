@@ -18,7 +18,7 @@ export default async function PrimeiroAcesso() {
 
           <PrimeiroAcessoForm />
 
-          <p><small>Não se preocupe: depois desse primeiro cadastro, você poderá cadastrar seus(suas) funcionários(as), clientes e outras informações importantes.</small></p>
+          <p><small>Depois desse primeiro cadastro, você poderá cadastrar seus(suas) funcionários(as), clientes e outras informações importantes.</small></p>
         </div>
       </div>
     </>

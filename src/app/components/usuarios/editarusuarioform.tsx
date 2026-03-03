@@ -62,7 +62,7 @@ export default function EditarUsuarioForm({ usuario }: { usuario: Usuario }) {
       <div className="formulario w-full md:w-[60%]">
         <form onSubmit={handleSubmit}>
           <fieldset className="mb-3">
-            <p><strong>Dados pessoais e profissionais</strong></p>
+            <p><strong>Dados básicos</strong></p>
 
             <div className="flex flex-col md:flex-row gap-3">
               <div className="w-full md:w-[50%]">

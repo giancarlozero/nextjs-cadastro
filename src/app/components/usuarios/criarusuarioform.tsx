@@ -50,7 +50,7 @@ export default function CriarUsuarioForm() {
           </fieldset>
 
           <fieldset className="mb-3">
-            <p><strong>Dados pessoais e profissionais</strong></p>
+            <p><strong>Dados básicos</strong></p>
 
             <div className="flex flex-col md:flex-row gap-3">
               <div className="w-full md:w-[50%]">
@@ -77,7 +77,7 @@ export default function CriarUsuarioForm() {
           </fieldset>
 
           <fieldset className="mb-3">
-            <p><strong>Credenciais</strong></p>
+            <p><strong>Credenciais de acesso</strong></p>
 
             <div className="flex flex-col md:flex-row gap-3">
               <div className="w-full md:w-[50%]">
