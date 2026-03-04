@@ -1,8 +1,8 @@
 'use client'
 
 import { Input } from "../ui/shadcn/input";
+import { PasswordInput } from "../ui/multiform/passwordinput";
 import { FieldLabel } from "../ui/shadcn/field";
-
 import Link from "next/link";
 import { criarUsuario } from "../../actions/usuarios";
 import { toast } from "react-toastify";
@@ -86,7 +86,14 @@ export default function CriarUsuarioForm() {
               </div>
               <div className="w-full md:w-[50%]">
                 <FieldLabel htmlFor="senha">Senha</FieldLabel>
-                <Input className="w-full bg-white rounded p-2 mb-1" type="password" name="senha" id="senha" required />
+                {/* <Input className="w-full bg-white rounded p-2 mb-1" type="password" name="senha" id="senha" required /> */}
+                <PasswordInput
+                  className="w-full bg-white rounded p-2"
+                  name="senha"
+                  id="senha"
+                  placeholder="Letras, números e caracteres especiais"
+                  required
+                />
               </div>
             </div>
           </fieldset>

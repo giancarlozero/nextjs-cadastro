@@ -4,6 +4,7 @@ import { Card } from "../ui/shadcn/card"
 import { Input } from "../ui/shadcn/input"
 import { Button } from "../ui/shadcn/button"
 import { FieldLabel } from "../ui/shadcn/field"
+import { PasswordInput } from "../ui/multiform/passwordinput";
 import { useState } from "react"
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -54,6 +55,12 @@ export default function PrimeiroAcessoForm() {
 
           <div className="flex flex-col md:flex-row gap-3 mb-3">
             <div className="w-full">
+              <h2>Dados básicos</h2>
+            </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-3 mb-3">
+            <div className="w-full">
               <FieldLabel>Nome</FieldLabel>
               <Input
                 className=""
@@ -98,6 +105,12 @@ export default function PrimeiroAcessoForm() {
 
           <div className="flex flex-col md:flex-row gap-3 mb-3">
             <div className="w-full">
+              <h2>Credenciais de acesso de acesso</h2>
+            </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-3 mb-3">
+            <div className="w-full">
               <FieldLabel>Endereço de email</FieldLabel>
               <Input
                 className=""
@@ -109,11 +122,9 @@ export default function PrimeiroAcessoForm() {
 
             <div className="w-full">
               <FieldLabel>Senha</FieldLabel>
-              <Input
-                className=""
-                type="password"
+              <PasswordInput
                 name="senha"
-                placeholder="Use letras, números e caracteres especiais"
+                placeholder="Letras, números e caracteres especiais"
               />
             </div>
           </div>
