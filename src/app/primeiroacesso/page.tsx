@@ -1,4 +1,6 @@
 import PrimeiroAcessoForm from "../components/primeiroacesso/primeiroacessoform";
+import { prisma } from "../lib/prisma";
+import { redirect } from "next/navigation"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -6,6 +8,13 @@ export const metadata: Metadata = {
 };
 
 export default async function PrimeiroAcesso() {
+  //Se a tabela Usuário estiver vazia, exiba o formulário de cadastro de primeiro acesso.
+  const temUsuarios = await prisma.usuario.count();
+
+  if(temUsuarios >= 0) {
+    redirect("/")
+  }
+
   return(
     <>
       <div className="w-full md:h-dvh bg-gray-200">

@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import styles from '@/app/painel/painel.module.css'
+import { getSession } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Painel de Controle | NextJS CRUD"
 };
 
-export default function Inicio() {
+export default async function Inicio() {
+  const sessaoAtiva = await getSession();
+
+  if(!sessaoAtiva) {
+    redirect('/');
+  }
+
   return(
     <>
       <div className={["secao-titulo m-2 p-2 mb-3 border rounded", styles.boxConteudo].join(" ")}>
