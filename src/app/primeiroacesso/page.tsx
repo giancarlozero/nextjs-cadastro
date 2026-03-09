@@ -11,7 +11,7 @@ export default async function PrimeiroAcesso() {
   //Se a tabela Usuário estiver vazia, exiba o formulário de cadastro de primeiro acesso.
   const temUsuarios = await prisma.usuario.count();
 
-  if(temUsuarios >= 0) {
+  if(temUsuarios >= 1) {
     redirect("/")
   }
 
@@ -19,7 +19,6 @@ export default async function PrimeiroAcesso() {
     <>
       <div className="w-full md:h-dvh bg-gray-200">
         <div className="md:h-screen flex flex-col items-center justify-center p-3">
-          {/* <img src="https://placehold.co/200x120?text=Logo" alt="" /> */}
           <h1>Olá!</h1>
           <p>Boas vindas ao sistema de gestão para agências de publicidade.</p>
           <p>Como esta é a primeira vez que você usa este sistema, será necessário criar uma <strong>conta de Administrador</strong>.</p>
