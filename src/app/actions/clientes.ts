@@ -24,7 +24,7 @@ export async function criarCliente(formData: FormData) {
     const descricao = formData.get('descricao') as string;
 
 
-    // Salva os dados do novo usuário no banco
+    // Salva os dados do novo cliente no banco
     const cliente = await prisma.cliente.create({
       data: {
         nome,
@@ -34,7 +34,7 @@ export async function criarCliente(formData: FormData) {
       }
     });
 
-    // Salva as relações entre cliente e serviço na tabela pivot ClienteServico
+    // Salva as relações entre cliente e serviço na tabela pivot "ClienteServico"
     if(servSelecionados.length > 0) {
       await prisma.clienteServico.createMany({
         data: servSelecionados.map((serv: any) => ({
@@ -48,7 +48,6 @@ export async function criarCliente(formData: FormData) {
 
     return { success: true, message: 'Cliente criado com sucesso.' }
   } catch (error) {
-    console.error('criarCliente error', error);
     return { success: false, message: 'Erro ao criar cliente.' }
   }
 }
@@ -72,7 +71,7 @@ export async function editarCliente(clienteId: string, formData: FormData) {
       (acc: number, serv: any) => acc + Number(serv.preco) * Number(serv.quantidade), 0
     );
 
-    // Salva os novos dados do cliente
+    // Salva os novos dados do cliente no banco
     await prisma.cliente.update({
       where: {
         id: clienteId
@@ -85,11 +84,13 @@ export async function editarCliente(clienteId: string, formData: FormData) {
       }
     });
 
-    // Atualiza na tabela pivot as relações cliente x serviço
+    // Atualiza na tabela pivot as relações cliente x serviço:
+    // Primeiro, apaga os dados antigos...
     await prisma.clienteServico.deleteMany({
       where: { clienteId }
     });
 
+    // ...e depois, salva os dados novos.
     if(servSelecionados.length > 0) {
       await prisma.clienteServico.createMany({
         data: servSelecionados.map((serv: any) => ({
@@ -112,6 +113,7 @@ export async function editarCliente(clienteId: string, formData: FormData) {
 export async function apagarCliente(formData: FormData) {
   const clienteApagarId = formData.get('id')
 
+  // Se não houver cliente com esse ID, alerte com uma mensagem de erro.
   if(!clienteApagarId) {
       return {
         success: false,
@@ -120,12 +122,14 @@ export async function apagarCliente(formData: FormData) {
     }
 
   try {
+    // Apaga os serviços selecionados pelo cliente...
     await prisma.clienteServico.deleteMany({
       where: {
         clienteId: clienteApagarId
       }
     })
 
+    // ... e depois apaga o cliente.
     await prisma.cliente.delete({
       where: {
         id: clienteApagarId

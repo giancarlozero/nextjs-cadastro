@@ -27,25 +27,25 @@ export default function CriarServicoForm() {
 
   return(
     <div className={["secao-dados flex flex-col md:flex-row m-2 p-2 mb-3 gap-2 border rounded", styles.boxConteudo].join(" ")}>
-      <div className="info w-[100%] md:w-[40%]">
+      <div className="info w-full md:w-[40%]">
         <p>Preencha o formulário e crie um novo serviço neste sistema com os dados desejados. Defina aqui o título/nome do serviço, o preço a ser cobrado por ele e dê uma breve descrição do serviço para facilitar o entendimento.</p>
       </div>
-      <div className="formulario w-[100%] md:w-[60%]">
+      <div className="formulario w-full md:w-[60%]">
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row gap-3">
-            <div className="w-[100%] md:w-[50%]">
+            <div className="w-full md:w-[50%]">
               <FieldLabel htmlFor="titulo">Título do serviço</FieldLabel>
               <Input className="w-full bg-white rounded p-2 mb-1" type="text" name="titulo" id="titulo" required />
             </div>
 
-            <div className="w-[100%] md:w-[50%]">
-              <FieldLabel htmlFor="preco">Preço (em Reais)</FieldLabel>
-              <Input className="w-full bg-white rounded p-2 mb-1" type="number" step="0.01" name="preco" id="preco" required />
+            <div className="w-full md:w-[50%]">
+              <FieldLabel htmlFor="preco">Preço (em R$)</FieldLabel>
+              <Input className="w-full bg-white rounded p-2 mb-1" type="text" name="preco" id="preco" required />
             </div>
           </div>
 
           <div className="flex flex-col md:flex-row gap-3">
-            <div className="w-[100%]">
+            <div className="w-full">
               <FieldLabel htmlFor="descricao">Descrição - OPCIONAL</FieldLabel>
               <Textarea name="descricao" className="w-full bg-white rounded p-2 mb-1" id="descricao" rows={5} />
             </div>

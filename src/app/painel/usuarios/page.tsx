@@ -12,7 +12,7 @@ export default async function Usuarios() {
   // ==================================
   const admins = await prisma.usuario.findMany({
     where: {
-      nivel_acesso: "Administrador",
+      nivel_acesso: "0",
     },
     orderBy: {
       nome: 'asc'
@@ -23,7 +23,7 @@ export default async function Usuarios() {
   // ===========================
   const usuarios = await prisma.usuario.findMany({
     where: {
-      nivel_acesso: "Usuário"
+      nivel_acesso: "1"
     },
     orderBy: {
       nome: 'asc'

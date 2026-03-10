@@ -1,15 +1,26 @@
 import type { Metadata } from "next";
 import styles from '@/app/painel/painel.module.css'
+import { getSession } from "@/lib/auth";
+import { requireUser } from "@/lib/requireuser";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Painel de Controle | NextJS CRUD"
 };
 
-export default function Inicio() {
+export default async function Inicio() {
+  const sessaoAtiva = await getSession();
+
+  if(!sessaoAtiva) {
+    redirect('/');
+  }
+
+  const usuarioAtual = await requireUser();
+
   return(
     <>
       <div className={["secao-titulo m-2 p-2 mb-3 border rounded", styles.boxConteudo].join(" ")}>
-        <h1>Boas vindas, usuário(a)!</h1>
+        <h1>Boas vindas, {usuarioAtual.nome}!</h1>
       </div>
 
       <div className="secao-dados m-2 grid grid-cols-4 gap-2.5">

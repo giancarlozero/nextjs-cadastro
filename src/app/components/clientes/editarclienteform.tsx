@@ -91,13 +91,13 @@ export default function EditarClienteForm({ cliente, listaServicos =[] }: any) {
 
   return(
     <div className={["secao-dados flex flex-col md:flex-row m-2 p-2 mb-3 gap-2 border rounded", styles.boxConteudo].join(" ")}>
-      <div className="info w-[100%] md:w-[40%]">
+      <div className="info w-full md:w-[40%]">
         <EditarClienteDescricao />
       </div>
-      <div className="formulario w-[100%] md:w-[60%]">
+      <div className="formulario w-full md:w-[60%]">
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row gap-3">
-            <div className="w-[100%] md:w-[50%]">
+            <div className="w-full md:w-[50%]">
               {/* Título do serviço como valor pré-preenchido */}
               <FieldLabel htmlFor="nome">Nome completo ou Razão Social</FieldLabel>
               <Input
@@ -110,7 +110,7 @@ export default function EditarClienteForm({ cliente, listaServicos =[] }: any) {
               />
             </div>
 
-            <div className="w-[100%] md:w-[50%]">
+            <div className="w-full md:w-[50%]">
               {/* Preço cobrado pelo serviço como valor pré-preenchido */}
               <FieldLabel htmlFor="documento">Documento (CPF ou CNPJ)</FieldLabel>
               <Input
@@ -153,7 +153,7 @@ export default function EditarClienteForm({ cliente, listaServicos =[] }: any) {
           </div>
 
           <div className="flex flex-col md:flex-row gap-3">
-            <div className="w-[100%]">
+            <div className="w-full">
               {/* Descrição do serviço como valor pré-preenchido */}
               <FieldLabel htmlFor="descricao">Descrição - OPCIONAL</FieldLabel>
               <Textarea

@@ -1,6 +1,9 @@
 'use server'
 
 import { prisma } from "../lib/prisma";
+import { criarUsuarioSchema } from "../lib/schemas";
+import bcrypt from "bcryptjs";
+import z from "zod";
 
 // CRIAR usuário
 // =============
@@ -9,22 +12,65 @@ export async function criarUsuario(formData: FormData) {
     // Usa formData.get para pegar os valores de cada campo e atribuir à respectiva variável
     const nome = formData.get('nome') as string;
     const sobrenome = formData.get('sobrenome') as string;
-    const nivel_acesso = formData.get('nivel_acesso') as string;
+    const nivel_acesso = formData.get('nivel_acesso') as string; // '0' = Admin. '1' = Usuário comum
     const setor = formData.get('setor') as string;
     const cargo = formData.get('cargo') as string;
     const email = formData.get('email') as string;
     const senha = formData.get('senha') as string;
 
+    // Recebe os dados do formulário
+    const dadosDoForm = {
+      nivel_acesso: formData.get("nivel_acesso"),
+      nome: formData.get("nome"),
+      sobrenome: formData.get("sobrenome"),
+      setor: formData.get("setor"),
+      cargo: formData.get("cargo"),
+      email: formData.get("email"),
+      senha: formData.get("senha"),
+    };
+
+    // Valida os dados do formulário com o Zod
+    const dadosValidados = criarUsuarioSchema.safeParse(dadosDoForm);
+
+    if(!dadosValidados.success) {
+      const listaErros = z.treeifyError(dadosValidados.error);
+
+      const errosFormatados: Record<string, string[]> = {};
+
+      const obterMensagens = (obj: any, prefix = "") => {
+        for (const chave in obj) {
+          const valor = obj[chave];
+
+          if(Array.isArray(valor)) {
+            errosFormatados[prefix + chave] = valor;
+          } else if(typeof valor === "object") {
+            obterMensagens(valor, prefix + chave + ".")
+          }
+        }
+      };
+
+      obterMensagens(listaErros)
+
+      return {
+        success: false,
+        errors: errosFormatados,
+      }
+    }
+
+    // Criptografa a senha com BCrypt
+    const senhaHash = await bcrypt.hash(dadosValidados.data.senha, 10);
+
     // Salva os dados do novo usuário no banco
     const usuarioCriado = await prisma.usuario.create({
       data: {
-        nome,
-        sobrenome,
-        nivel_acesso,
-        setor,
-        cargo,
-        email,
-        senha
+        // ...dadosValidados.data,
+        nivel_acesso: dadosValidados.data.nivel_acesso,
+        nome: dadosValidados.data.nome,
+        sobrenome: dadosValidados.data.sobrenome,
+        setor: dadosValidados.data.setor,
+        cargo: dadosValidados.data.cargo,
+        email: dadosValidados.data.email,
+        senha: senhaHash
       }
     })
 

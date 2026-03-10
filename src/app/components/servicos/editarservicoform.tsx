@@ -46,27 +46,27 @@ export default function EditarServicoForm({ servico }: { servico: Servico }) {
 
   return(
     <div className={["secao-dados flex flex-col md:flex-row m-2 p-2 mb-3 gap-2 border rounded", styles.boxConteudo].join(" ")}>
-      <div className="info w-[100%] md:w-[40%]">
+      <div className="info w-full md:w-[40%]">
         <p>Edite os valores dos campos desejados no formulário para atualizar as informações deste serviço.</p>
       </div>
-      <div className="formulario w-[100%] md:w-[60%]">
+      <div className="formulario w-full md:w-[60%]">
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row gap-3">
-            <div className="w-[100%] md:w-[50%]">
+            <div className="w-full md:w-[50%]">
               {/* Título do serviço como valor pré-preenchido */}
               <label htmlFor="titulo">Título do serviço</label>
               <input type="text" name="titulo" className="w-full bg-white rounded p-2 mb-1" id="titulo" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
             </div>
 
-            <div className="w-[100%] md:w-[50%]">
+            <div className="w-full md:w-[50%]">
               {/* Preço cobrado pelo serviço como valor pré-preenchido */}
               <label htmlFor="preco">Preço (em R$)</label>
-              <input type="number" name="preco" className="w-full bg-white rounded p-2 mb-1" id="preco" value={preco} onChange={(e) => setPreco(e.target.value)} />
+              <input type="text" name="preco" className="w-full bg-white rounded p-2 mb-1" id="preco" value={preco} onChange={(e) => setPreco(e.target.value)} />
             </div>
           </div>
 
           <div className="flex flex-col md:flex-row gap-3">
-            <div className="w-[100%]">
+            <div className="w-full">
               {/* Descrição do serviço como valor pré-preenchido */}
               <label htmlFor="descricao">Descrição - OPCIONAL</label>
               <textarea name="descricao" className="w-full bg-white rounded p-2 mb-1" id="descricao" value={descricao} rows={5} onChange={(e) => setDescricao(e.target.value)} />
