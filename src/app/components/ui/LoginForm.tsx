@@ -71,16 +71,11 @@ export default function LoginForm() {
       </div>
 
       {/* <br />
-
-      <Link className="linksimples" href="#">Esqueci minha senha</Link> */}
-
+      <Link className="linksimples" href="#">Esqueci minha senha</Link>
       <br /><br />
-
       <Link className="linksimples" href="/painel">Link temporário para testar autenticação</Link>
-
       <br />
-
-      <Link className="linksimples" href="/primeiroacesso">Link temporário para testar formulário de primeiro acesso</Link>
+      <Link className="linksimples" href="/primeiroacesso">Link temporário para testar formulário de primeiro acesso</Link> */}
     </form>
   </>)
 }
